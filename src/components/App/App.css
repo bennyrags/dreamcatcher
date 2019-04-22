@@ -1,8 +1,20 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
+    display:flex;
+    height:100vh;
+    align-items: center;
+    width:100%;
+}
+/*SETS MAIN DIV TO 100%*/
+body > div {
+    width:100%;
 }
 
+.nav {
+    top:0; 
+    position: fixed;
+}
 .alert {
     background-color: #ff4545;
     margin: 50px;
@@ -10,11 +22,11 @@ body {
 
 form {
     background-color: #dbd5d5;
-    width: 30%;
-    height: 250px;
-    margin: 20px auto;
-    padding: 25px;
+    width: 90%;
+    padding: 10px;
     border-radius: 2px;
+    margin: auto;
+    align-self:center;
 }
 
 input {
