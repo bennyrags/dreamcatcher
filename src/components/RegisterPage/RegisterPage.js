@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import './RegistrationPage.css'
+import './RegistrationPage.css';
+//import TextField from '@material-ui/core/TextField';
+
 class RegisterPage extends Component {
   state = {
     firstName: '',
