@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
 
 class LoginPage extends Component {
   state = {
@@ -31,7 +33,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -74,15 +76,15 @@ class LoginPage extends Component {
           </div>
         </form>
         <center>
-          <button
+          <Button
             type="button"
             className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_REGISTER_MODE'})}}
           >
             Register
-          </button>
+          </Button>
         </center>
-      </div>
+      </>
     );
   }
 }

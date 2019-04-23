@@ -9,8 +9,9 @@ import NewDream from '../NewDream/NewDream'
 const UserPage = (props) => (
   <div>
     <h1 id="welcome">
-      welcome back, { props.user.first_name }
+     Hi { props.user.first_name }
     </h1>
+    <h2>welcome back</h2>
     <button className='mainButton'>
       Add new Dream
     </button>
@@ -21,7 +22,7 @@ const UserPage = (props) => (
    
   
     {/* <p>Your ID is: {props.user.id}</p> */}
-    {/* <LogOutButton className="log-in" /> */}
+    <LogOutButton className="log-in" />
   </div>
 );
 
