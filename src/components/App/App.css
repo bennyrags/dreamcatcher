@@ -95,14 +95,14 @@ input {
 
 /*Adding !important to override mat ui stuff -chg*/
 .log-in, .log-out, .register, .mainButton, .link-button {
-border: 2px solid white !important;
+border: 2px solid white;
   background:transparent;
-  color: white !important;
+  color: white ;
   padding:10px 20px;
   cursor: pointer;
   font-size:18px;
 display:block;
-margin:1em auto !important;
-font-family: 'Loved By The King', sans-serif !important;
+margin:1em auto;
+font-family: 'Loved By The King', sans-serif;
 }
 

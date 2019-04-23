@@ -17,7 +17,8 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import './App.css';
-
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import theme from '../Theme/theme';
 
 
 
@@ -28,6 +29,7 @@ class App extends Component {
 
   render() {
     return (
+<MuiThemeProvider theme={theme}>
       <Router>
         <div>
           <Nav />
@@ -65,6 +67,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
+      </MuiThemeProvider>
   )}
 }
 

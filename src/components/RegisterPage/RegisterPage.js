@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import './RegistrationPage.css';
-//import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class RegisterPage extends Component {
   state = {
@@ -51,61 +52,57 @@ class RegisterPage extends Component {
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <div>
-          <label htmlFor="firstName">
-              First Name:
-              <input
-                type="text"
-                name="firstName"
-                value={this.state.firstName}
-                onChange={this.handleInputChangeFor('firstName')}
-              />
-            </label><br></br>
-            <label htmlFor="lastName">
-              Last Name:<br />
-              <input
-                type="text"
-                name="lastName"
-                value={this.state.lastName}
-                onChange={this.handleInputChangeFor('lastName')}
-              />
-            </label><br></br>
-            <label htmlFor="email">
-              E-mail:
-              <input
-                type="text"
-                name="email"
-                value={this.state.email}
-                onChange={this.handleInputChangeFor('email')}
-              />
-            </label><br></br>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
+          <div className='loginFieldContainer'>
+          <TextField
+          label='First Name'
+          //type="text"
+          name="firstName"
+          value={this.state.firstName}
+          onChange={this.handleInputChangeFor('firstName')}
+          />
           </div>
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
+          <TextField
+          label='Last Name'
+          //type="text"
+          name="lastName"
+          value={this.state.lastName}
+          onChange={this.handleInputChangeFor('lastName')}
+          />
           </div>
           <div>
-            <input
+          <TextField
+          label='Email'
+          //type="text"
+          name="email"
+          value={this.state.email}
+          onChange={this.handleInputChangeFor('email')}
+          />
+          </div>
+          <div>
+          <TextField
+          label='Username'
+          //type="text"
+          name="username"
+          value={this.state.username}
+          onChange={this.handleInputChangeFor('username')}
+          />
+          </div>
+          <div>
+          <TextField
+          label='Password'
+          //type="text"
+          name="password"
+          value={this.state.password}
+          onChange={this.handleInputChangeFor('password')}
+          />
+          </div>
+            <Button
               className="register"
               type="submit"
               name="submit"
               value="Register"
-            />
+            > Register </Button>
           </div>
         </form>
         <center>
