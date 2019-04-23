@@ -74,6 +74,20 @@ form {
     display: block;
 }
 
+loginFieldContainer {
+    display:block;
+}
+
+
+.tempTextFieldClass {
+    color:white !important;
+
+}
+
+.tempTextFieldClass label {
+    color:white !important;
+}
+
 input {
     margin: 5px;
     margin-bottom: 10px;

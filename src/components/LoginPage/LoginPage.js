@@ -44,35 +44,33 @@ class LoginPage extends Component {
         )}
         <form onSubmit={this.login}>
           <h2>Login</h2>
-          <div>
-            <label htmlFor="username">
-              Username:
-              <input
-                type="text"
-                name="username"
-                value={this.state.username}
-                onChange={this.handleInputChangeFor('username')}
-              />
-            </label>
+          <div className='loginFieldContainer'>
+          <TextField
+          label='Username'
+          value={this.state.username}
+          onChange={this.handleInputChangeFor('username')}    variant='filled' 
+          className='tempTextFieldClass'
+          />
           </div>
-          <div>
-            <label htmlFor="password">
-              Password:
-              <input
-                type="password"
-                name="password"
-                value={this.state.password}
-                onChange={this.handleInputChangeFor('password')}
-              />
-            </label>
+
+          <div className='loginFieldContainer'>
+          <TextField
+          label='Password'
+          value={this.state.password}
+          onChange={this.handleInputChangeFor('password')}
+          variant='filled' 
+          className='tempTextFieldClass'
+          />
           </div>
+
           <div>
-            <input
+            <Button
               className="log-in"
               type="submit"
               name="submit"
-              value="Log In"
-            />
+            >
+            Log In
+            </Button>
           </div>
         </form>
         <center>
