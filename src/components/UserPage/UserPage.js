@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import Button from '@material-ui/core/Button'
-import NewDream from '../NewDream/NewDream'
+//import NewDream from '../NewDream/NewDream'
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
@@ -12,13 +12,13 @@ const UserPage = (props) => (
      Hi { props.user.first_name }
     </h1>
     <h2>welcome back</h2>
-    <button className='mainButton'>
+    <Button className='mainButton'>
       Add new Dream
-    </button>
+    </Button>
    
-    <button className='mainButton'>
+    <Button className='mainButton'>
   See Dreams
-    </button>
+    </Button>
    
   
     {/* <p>Your ID is: {props.user.id}</p> */}
