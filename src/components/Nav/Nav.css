@@ -1,9 +1,5 @@
 a {text-decoration: none;}
 
-
-
-
-
 .nav-title {
     font-size: 2.5rem;
     font-weight: 700;
@@ -25,21 +21,24 @@ a {text-decoration: none;}
   top: 5px;
   right: 10px;
 }
+.navContainer {
+  height:100vh;
+  display: flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+}
 .nav-link {
-  color: #f2f2f2;
-  background-color: #00acb0;
+  color: tomato;
+  font-family: 'Loved By The King', sans-serif;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
-  font-size: 15px;
+  font-size: 30px;
 display: block;
   /* these last two make the logout button in
   the nav bar look like another link */
   border:none;
   cursor: pointer;
   outline:0;
-}
-
-.nav-link:hover {
-  background-color: #008183;
 }
