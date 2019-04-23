@@ -13,7 +13,8 @@ overrides: {
             fontFamily: `'Loved By The King', sans-serif`,
             borderRadius: 0,
             margin: '.5em 0'
-        }
+        },
+   
     }
 }
 });

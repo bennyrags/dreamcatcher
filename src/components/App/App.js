@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import './App.css';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import theme from '../Theme/theme';
+import NewDreamStep1 from '../NewDreamStep1/NewDreamStep1';
 
 
 
@@ -35,6 +36,7 @@ class App extends Component {
           <Nav />
 
         <div className='container'>
+
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
@@ -60,6 +62,11 @@ class App extends Component {
               exact
               path="/info"
               component={InfoPage}
+            />
+            <ProtectedRoute
+              exact
+              path="/step1"
+              component={NewDreamStep1}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
