@@ -2,14 +2,33 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import Button from '@material-ui/core/Button'
 import './Nav.css';
 
+const styles = {
+header : {
+  backgroundColor:`green`
+}
+
+}
+
 const Nav = (props) => (
+  
   <div className="nav">
+    <header>
     <Link to="/home">
-      <h1 className="nav-title">* DREAMCATCHER * </h1>
+      <h1 className="nav-title">DREAMCATCHER  </h1>
     </Link>
-    <div className="nav-right">
+    <div className='menu'>
+    <Button>Menu</Button>
+    </div>
+    </header>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
