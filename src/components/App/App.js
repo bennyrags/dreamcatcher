@@ -23,7 +23,6 @@ import NewDreamStep1 from '../NewDreamStep1/NewDreamStep1';
 import NewDreamStep2 from '../NewDreamStep2/NewDreamStep2'
 import NewDreamStep3 from '../NewDreamStep3/NewDreamStep3'
 import NewDreamStep4 from '../NewDreamStep4/NewDreamStep4'
-import NewDreamStep5 from '../NewDreamStep5/NewDreamStep5'
 import DreamsList from '../DreamsList/DreamsList'
 import ThemesList from '../ThemesList/ThemesList'
 import SubmitDream from '../SubmitDream/SubmitDream'
@@ -88,11 +87,6 @@ class App extends Component {
               exact
               path="/step4"
               component={NewDreamStep4}
-            />
-            <ProtectedRoute
-              exact
-              path="/step5"
-              component={NewDreamStep5}
             />
             <ProtectedRoute
               exact

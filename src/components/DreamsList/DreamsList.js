@@ -2,15 +2,27 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 import {HashRouter as Router} from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
+//import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
-import { Tab } from '@material-ui/core';
+import moment from 'moment';
+//import { Tab } from '@material-ui/core';
 
 class DreamList extends Component {
+
+    handleClick = (id) => {
+        console.log('this is the click for dream, here is id', id)
+    
+    }
+
+
+componentDidMount() {
+    this.props.dispatch({type:'FETCH_DREAMS', payload: this.props.user.id})
+
+}
 
 nextStep = () => {
     console.log('in nextStep');
@@ -23,13 +35,14 @@ lastStep = () => {
 
     render() {
         return(
+            
             <>
             <h1>Your Dreams</h1>
 <Table>
     <TableHead>
         <TableRow>
             <TableCell>
-                MM/DD/YY
+                Date
             </TableCell>
             <TableCell>
                 Description
@@ -37,32 +50,23 @@ lastStep = () => {
         </TableRow>
     </TableHead>
     <TableBody>
-        <TableRow>
-            <TableCell>
-                04/19/2019
-            </TableCell>
-            <TableCell>
-            Lorem ipsum dolor sit amet...
-            </TableCell>
+       {this.props.dreams.map(dream => {
+        
+        let dreamSentance = dream.description.split(' ');
+        let firstFewWords = '';
+            for (let i=0; i < 4; i++) {
+                firstFewWords += ' ' + dreamSentance[i];
+            }
+
+        return <TableRow onClick={()=>this.handleClick(dream.id)} key={dream.id}>
+          <TableCell>{moment(dream.date).format('L')}</TableCell>  
+          <TableCell>{firstFewWords}...</TableCell>  
         </TableRow>
-        <TableRow>
-            <TableCell>
-                04/23/2019
-            </TableCell>
-            <TableCell>
-            Lorem ipsum dolor sit amet...
-            </TableCell>
-        </TableRow>
-        <TableRow>
-            <TableCell>
-                04/24/2019
-            </TableCell>
-            <TableCell>
-            Lorem ipsum dolor sit amet...
-            </TableCell>
-        </TableRow>
+        }
+        )}
     </TableBody>
 </Table>
+
         <Button onClick={this.lastStep}>Back</Button>
         <Button onClick={this.nextStep}>Save</Button>
 
@@ -75,6 +79,7 @@ lastStep = () => {
 
 const mapStateToProps = state => ({
     user: state.user,
+    dreams: state.dreams
   });
   
   export default connect(mapStateToProps)(DreamList);
