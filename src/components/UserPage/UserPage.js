@@ -9,8 +9,6 @@ import {HashRouter as Router} from 'react-router-dom';
 
 class UserPage extends Component {
   newDream = () => {
-    console.log(`in newDream`
-    );
    this.props.history.push('/step1'); 
   }
 

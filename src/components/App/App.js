@@ -18,10 +18,16 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 import './App.css';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
-import theme from '../Theme/theme';
+import theme from '../StyleThemes/themes';
 import NewDreamStep1 from '../NewDreamStep1/NewDreamStep1';
-
-
+import NewDreamStep2 from '../NewDreamStep2/NewDreamStep2'
+import NewDreamStep3 from '../NewDreamStep3/NewDreamStep3'
+import NewDreamStep4 from '../NewDreamStep4/NewDreamStep4'
+import NewDreamStep5 from '../NewDreamStep5/NewDreamStep5'
+import DreamsList from '../DreamsList/DreamsList'
+import ThemesList from '../ThemesList/ThemesList'
+import SubmitDream from '../SubmitDream/SubmitDream'
+import Dream from '../Dream/Dream'
 
 class App extends Component {
   componentDidMount () {
@@ -68,6 +74,43 @@ class App extends Component {
               path="/step1"
               component={NewDreamStep1}
             />
+            <ProtectedRoute
+              exact
+              path="/step2"
+              component={NewDreamStep2}
+            />
+            <ProtectedRoute
+              exact
+              path="/step3"
+              component={NewDreamStep3}
+            />
+            <ProtectedRoute
+              exact
+              path="/step4"
+              component={NewDreamStep4}
+            />
+            <ProtectedRoute
+              exact
+              path="/step5"
+              component={NewDreamStep5}
+            />
+            <ProtectedRoute
+              exact
+              path="/dreams"
+              component={DreamsList}
+            />
+            <ProtectedRoute
+              exact
+              path="/themes"
+              component={ThemesList}
+            />
+            <ProtectedRoute
+              exact
+              path="/submitDream"
+              component={SubmitDream}
+            />
+
+
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

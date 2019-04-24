@@ -4,16 +4,19 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
 import {HashRouter as Router} from 'react-router-dom';
 
-class NewDreamStep1 extends Component {
+class ThemeAddNew extends Component {
 
-nextStep = () => {
-    this.props.history.push('/step2')
-}
+    saveTheme = () => {
+        console.log(`in saveTheme`);
+        //need to push this new theme to the server
+        //need to redirect to the step 4 with this theme chosen
+        
+    }
 
     render() {
         return(
             <>
-            <h1>New Dream</h1>
+            <h1>Add New Dream</h1>
             <TextField
             id='filled-multiline-static'
           label="Enter New Dream"
@@ -28,7 +31,7 @@ nextStep = () => {
           margin="normal"
           
         />
-        <Button onClick={this.nextStep}>Next</Button>
+        <Button onClick={this.saveTheme}>Save Theme</Button>
         </>
         )
     }
@@ -40,5 +43,5 @@ const mapStateToProps = state => ({
     user: state.user,
   });
   
-  export default connect(mapStateToProps)(NewDreamStep1);
+  export default connect(mapStateToProps)(ThemeAddNew);
   

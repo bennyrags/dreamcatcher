@@ -45,7 +45,7 @@ class Nav extends Component {
         >
 
           <div className='navContainer'>
-            <Link className="nav-link" to="/home">
+            <Link onClick={()=>this.toggleDrawer('left', false)}  className="nav-link" to="/home">
               {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
         and call this link 'Login / Register' if they are not */}
@@ -54,8 +54,14 @@ class Nav extends Component {
             {/* Show the link to the info page and the logout button if the user is logged in */}
             {this.props.user.id && (
               <>
-                <Link className="nav-link" to="/info">
+                <Link onClick={()=>this.toggleDrawer('left', false)} className="nav-link" to="/info">
                   Info
+          </Link>
+                <Link onClick={()=>this.toggleDrawer('left', false)} className="nav-link" to="/dreams">
+                  Dreams
+          </Link>
+                <Link onClick={()=>this.toggleDrawer('left', false)} className="nav-link" to="/themes">  
+                  Themes
           </Link>
                 <Link onClick={() => this.props.dispatch({ type: 'LOGOUT' })} className="nav-link" to="/">
                   Log Out
@@ -63,7 +69,7 @@ class Nav extends Component {
               </>
             )}
             {/* Always show this link since the about page is not protected */}
-            <Link className="nav-link" to="/about">
+            <Link onClick={()=>this.toggleDrawer('left', false)} className="nav-link" to="/about">
               About
       </Link>
           </div>
