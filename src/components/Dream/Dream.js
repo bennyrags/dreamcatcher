@@ -1,28 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button'
-
+import moment from 'moment';
 class Dream extends Component {
+
+    state = {
+        editedDream: {
+            description: ''
+        }
+    }
+
+getUrl = () => {
+    const keySplit = window.location.hash.split('=')
+    const id = Number(keySplit[1]);
+    this.props.dispatch({type:'FETCH_DREAM', payload: id});
+}
+
+goToAllDreams = () => {
+    this.props.history.push('/dreams');
+}
+
+deleteDream = () => {
+    console.log(`inside deleteDream`);
+}
+
+
+componentDidMount() {
+    this.getUrl();
+    
+}
+
     render() {
         return (
             <>
             <h2>
 Dream
             </h2>
-            <section className='dreamContainer'>
-                <h3>MM/DD/YYYY</h3>
+           
+                {this.props.dream.map(i => 
+            <section key={i.id} className='dreamContainer'>                
+           <h3>{moment(i.date).format('L')}</h3>
+
+           <h4>Mood Score: {i.score_mood}</h4>
+           <h4>Temp Score: {i.score_temp}</h4>
+           <h4>Themes: {i.string_agg}</h4>
                 <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                </p>
-                <p>
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    {i.description}
                 </p>
 
-               <Button>Edit</Button>
-               <Button>Delete</Button>
-               <Button>All Dreams</Button>
- 
-            </section>
+                <Button>Edit Description</Button>
+                <Button onClick={()=> this.deleteDream}>Delete</Button>
+                <Button onClick={this.goToAllDreams}>All Dreams</Button>
+                </section>    
+                )
+                
+            }
+            
         </>
         )
     }
@@ -31,7 +64,8 @@ Dream
 
 const mapStateToProps = state => ({
     user: state.user,
-  });
+    dream: state.dream,
+});
   
   export default connect(mapStateToProps)(Dream);
   

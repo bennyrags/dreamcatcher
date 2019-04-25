@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
-import {HashRouter as Router} from 'react-router-dom';
+//import {HashRouter as Router} from 'react-router-dom';
 
 class NewDreamStep4 extends Component {
 

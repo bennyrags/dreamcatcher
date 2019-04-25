@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 //import TextField from '@material-ui/core/TextField'
-import {HashRouter as Router} from 'react-router-dom';
+//import {HashRouter as Router} from 'react-router-dom';
 // import Radio from '@material-ui/core/Radio';
 // import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 // import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';

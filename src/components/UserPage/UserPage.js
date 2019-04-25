@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import Button from '@material-ui/core/Button'
-import {HashRouter as Router} from 'react-router-dom';
+//import {HashRouter as Router} from 'react-router-dom';
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
@@ -10,6 +10,10 @@ import {HashRouter as Router} from 'react-router-dom';
 class UserPage extends Component {
   newDream = () => {
    this.props.history.push('/step1'); 
+  }
+
+  goToDreams = () => {
+    this.props.history.push('/dreams')
   }
 
   render() {
@@ -22,7 +26,7 @@ class UserPage extends Component {
     Add new Dream
   </Button>
  
-  <Button className='mainButton'>
+  <Button onClick={this.goToDreams} className='mainButton'>
 See Dreams
   </Button>
  

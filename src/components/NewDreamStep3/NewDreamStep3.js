@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
-//import TextField from '@material-ui/core/TextField'
-import {HashRouter as Router} from 'react-router-dom';
+//import {HashRouter as Router} from 'react-router-dom';
 
 class NewDreamStep3 extends Component {
 

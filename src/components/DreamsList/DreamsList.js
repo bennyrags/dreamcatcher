@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
-import {HashRouter as Router} from 'react-router-dom';
+//import {HashRouter as Router} from 'react-router-dom';
 //import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -13,9 +13,11 @@ import moment from 'moment';
 
 class DreamList extends Component {
 
+    ///this will handle the click to the for going to the individual dream item.
     handleClick = (id) => {
-        console.log('this is the click for dream, here is id', id)
-    
+        console.log('this is the click for dream, here is id', id);
+        this.props.history.push(`/dream?id=${id}`)
+
     }
 
 

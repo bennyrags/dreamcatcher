@@ -11,6 +11,9 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const dreamsRouter = require('./routes/dreams.router');
+const dreamRouter = require('./routes/dream.router');
+const themesRouter = require('./routes/themes.router');
+const themeRouter = require('./routes/theme.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -26,6 +29,9 @@ app.use(passport.session());
 /* Routes */
 app.use('/api/user', userRouter);
 app.use('/api/dreams', dreamsRouter);
+app.use('/api/dream', dreamRouter);
+app.use('/api/theme', themeRouter);
+app.use('/api/themes', themesRouter);
 // Serve static files
 app.use(express.static('build'));
 

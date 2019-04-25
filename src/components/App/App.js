@@ -24,9 +24,12 @@ import NewDreamStep2 from '../NewDreamStep2/NewDreamStep2'
 import NewDreamStep3 from '../NewDreamStep3/NewDreamStep3'
 import NewDreamStep4 from '../NewDreamStep4/NewDreamStep4'
 import DreamsList from '../DreamsList/DreamsList'
-import ThemesList from '../ThemesList/ThemesList'
 import SubmitDream from '../SubmitDream/SubmitDream'
 import Dream from '../Dream/Dream'
+import ThemesList from '../ThemesList/ThemesList'
+import ThemeAddNew from '../ThemeAddNew/ThemeAddNew'
+import Theme from '../Theme/Theme'
+
 
 class App extends Component {
   componentDidMount () {
@@ -95,8 +98,23 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
+              path="/dream"
+              component={Dream}
+            />
+            <ProtectedRoute
+              exact
               path="/themes"
               component={ThemesList}
+            />
+            <ProtectedRoute
+              exact
+              path="/theme"
+              component={Theme}
+            />
+            <ProtectedRoute
+              exact
+              path="/theme-new"
+              component={ThemeAddNew}
             />
             <ProtectedRoute
               exact
