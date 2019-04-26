@@ -26,8 +26,15 @@ console.log(`this is the fetchdream function, here is the action`, action.payloa
   }
 }
 
+function* addNewDream(action) {
+  console.log(`in addNewDream saga, here is action`, action);
+  
+}
+
+
 function* dreamSaga() {
   yield takeLatest('FETCH_DREAM', fetchDream);
+  yield takeLatest('ADD_NEW_DREAM', addNewDream);
 }
 
 export default dreamSaga;

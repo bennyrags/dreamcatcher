@@ -17,7 +17,7 @@ addThemes = (event) => {
     //iterate rather?
     this.setState({
         addThemes: {
-            themeIDs: [...this.state.addThemes.themeIDs, event.target.value]
+            themeIDs: [...this.state.addThemes.themeIDs, Number(event.target.value)]
         }
       
     })
@@ -28,6 +28,7 @@ goToAddTheme = () => {
 }
 
 nextStep = () => {
+    this.props.dispatch({type:'ADD_THEMES', payload: this.state.addThemes.themeIDs})
     console.log('in nextStep');
    this.props.history.push('/submitDream')
 }

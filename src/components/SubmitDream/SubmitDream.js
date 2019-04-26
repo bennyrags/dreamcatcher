@@ -5,8 +5,9 @@ import Button from '@material-ui/core/Button';
 
 class NewDreamStep4 extends Component {
 
-nextStep = () => {
-    console.log('in nextStep');
+saveDream = () => {
+    console.log('in saveDream');
+    this.props.dispatch({type:'ADD_NEW_DREAM', payload:this.props.newDream})
    // this.props.history.push('/step5')
 }
 
@@ -23,7 +24,7 @@ lastStep = () => {
            </p>
 
         <Button onClick={this.lastStep}>Back</Button>
-        <Button onClick={this.nextStep}>Save</Button>
+        <Button onClick={this.saveDream}>Save</Button>
 
         </>
         )
@@ -34,6 +35,7 @@ lastStep = () => {
 
 const mapStateToProps = state => ({
     user: state.user,
+    newDream: state.dreamAdd
   });
   
   export default connect(mapStateToProps)(NewDreamStep4);

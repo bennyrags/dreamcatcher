@@ -32,7 +32,8 @@ console.log(`event target value:`, event.target.value);
         //need to push this new theme to the server
         //need to redirect to the step 4 with this theme chosen
         this.props.dispatch({type:'ADD_NEW_THEME', payload: this.state.newTheme})
-        this.props.history.push('/themes')
+        //i use go back b/c i can get to this page from different places. i want it to go back to wherever it comes from, not a particular page.
+        this.props.history.goBack();
     }//end saveTheme
 
     render() {
