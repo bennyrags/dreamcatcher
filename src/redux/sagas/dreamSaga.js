@@ -27,8 +27,16 @@ console.log(`this is the fetchdream function, here is the action`, action.payloa
 }
 
 function* addNewDream(action) {
-  console.log(`in addNewDream saga, here is action`, action);
+  console.log(`in addNewDream saga, here is action.payload.dreamInfo`, action.payload.dreamInfo);
+  console.log(`in addNewDream saga, here is action.payload.themes`, action.payload.themes);
   
+//ok i think what i have to do here is a series of yields. 
+
+//yield 1 - post payload.dream info to server. get dream id back as response. 
+//capture that id in a const
+//use that const in a loop to post indiv theme ids with the saved dream id
+
+
 }
 
 

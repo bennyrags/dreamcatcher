@@ -27,10 +27,19 @@ GROUP BY dreams.id;`;
     );
 })
 
-// router.get('/id:/dreams', (req,res,next) => {
-// //assume that id is sent with req so I can get dreams just for this id.
-//     const id = req.params.id;
-//     const queryText = ''
-// }); 
+router.post('/', rejectUnauthenticated, (req,res,next) => {
+const dream = req.body;
+    const queryText = `INSERT INTO "dreams" ("user_id","date","description","score_temp","score_mood")
+VALUES ($1,$2,$3,$4,$5);`
+pool.query(queryText, [dream.user_id, dream.date,dream.description,dream.score_temp,dream.score_mood])
+.then(reposonse => {
+res.send(response.data)
+})
+.catch(error => {
+res.sendStatus(500);
+console.log(`This is an error when posting new dream`, error);
+})
+
+});
 
 module.exports = router;
