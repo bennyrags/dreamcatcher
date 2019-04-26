@@ -32,6 +32,7 @@ console.log(`event target value:`, event.target.value);
         //need to push this new theme to the server
         //need to redirect to the step 4 with this theme chosen
         this.props.dispatch({type:'ADD_NEW_THEME', payload: this.state.newTheme})
+        this.props.history.push('/themes')
     }//end saveTheme
 
     render() {

@@ -10,7 +10,7 @@ class Theme extends Component {
         editedTheme: {
             id: 0,
             editing: false,
-            description: ''
+            description: this.props.theme.description
         }
     }
 
@@ -37,11 +37,12 @@ deleteTheme = (id) => {
     this.props.history.push('/themes')
 }
 
-editTheme = () => {
+editTheme = (description) => {
     this.setState({
         editedTheme: {
             ...this.state.editedTheme,
-            editing:true
+            editing:true,
+            description: description
 
         }
     })
@@ -91,7 +92,7 @@ Theme
                   ? 
                   <section>
                   <TextField 
-                    placeholder={i.theme_description}
+                    value={this.state.editedTheme.description}
                     onChange={this.handleTextUpdate}
                     multiline
                     rows='4'
@@ -102,7 +103,7 @@ Theme
                   : 
                   <section>
                   <p> {i.theme_description}</p>
-                  <Button onClick={this.editTheme}>Edit Theme Description</Button>
+                  <Button onClick={() => this.editTheme(i.theme_description)}>Edit Theme Description</Button>
                     <br />
                   <Button onClick={() => this.deleteTheme(i.id)}>Delete</Button>
                   </section>
