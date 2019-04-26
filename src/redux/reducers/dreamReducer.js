@@ -2,7 +2,7 @@ const dreamReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_DREAM':
       return action.payload;
-    default:
+    default: 
       return state;
   }
 };

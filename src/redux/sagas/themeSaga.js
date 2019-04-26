@@ -36,14 +36,36 @@ function* addNewTheme(action) {
 }
 
 catch (error) {
-  console.log('Th')
+  console.log('This is an error when adding new theme in saga,', error)
 }
 }
+function* updateTheme(action) {
+  console.log(`this is updateTheme`)
+  console.log(`this is updateTheme action,`, action.payload)
+  
+  try {
+  let editedTheme = action.payload;
+
+  yield axios.put(`api/Theme/${editedTheme.id}`, editedTheme);
+  yield put({type:'FETCH_THEME', payload: editedTheme.id});
+
+  //yield 
+}
+
+catch (error) {
+  console.log('This is an error when adding new theme in saga,', error)
+}
+}
+
+
+
+
 
 
 function* themeSaga() {
   yield takeLatest('FETCH_THEME', fetchTheme);
   yield takeLatest('ADD_NEW_THEME', addNewTheme);
+  yield takeLatest('UPDATE_THEME', updateTheme);
 }
 
 export default themeSaga;

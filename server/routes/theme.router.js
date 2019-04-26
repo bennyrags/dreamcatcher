@@ -24,6 +24,24 @@ router.get('/:id', rejectUnauthenticated, (req, res, next) => {
     );
 })
 
+router.put('/:id', rejectUnauthenticated, (req,res,next) =>{
+  const id = req.params.id; 
+  const description = req.body.description;
+  console.log(`this is req.body in router.put, `, req.body)
+
+  const queryText = `UPDATE "themes" SET "theme_description"=$1 WHERE id=$2`;
+  pool.query(queryText, [description, id])
+  .then(response=>{
+    res.sendStatus(200);
+  
+  })
+  .catch(error =>{
+    res.sendStatus(500);
+    console.log(`error updating theme. here it is:`, error);
+    
+  })
+})
+
 
 router.post('/', rejectUnauthenticated, (req,res,next) => {
 let newTheme = req.body;
