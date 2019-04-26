@@ -6,11 +6,34 @@ import TextField from '@material-ui/core/TextField'
 
 class NewDreamStep1 extends Component {
 
+state = {
+  newDream: {
+    description: '',
+   id: this.props.user.id
+}
+}
+
+handleTextChange = (event) => {
+  this.setState({
+    newDream: {
+    ...this.state.newDream,
+    description: event.target.value
+  }
+  })
+}
+
+saveDreamDescription = () => {
+  this.props.dispatch({type:'ADD_DREAM_DESCRIPTION', payload:this.state.newDream})
+}
+
 nextStep = () => {
+  this.saveDreamDescription();
     this.props.history.push('/step2')
 }
 
     render() {
+      console.log(`this is state inside of newDreamStep1`, this.state);
+      
         return(
             <>
             <h1>New Dream</h1>
@@ -21,10 +44,7 @@ nextStep = () => {
           rows='5'
           rowsMax="10"
           variant='outlined'
-
-        //   value={this.state.multiline}
-        //   onChange={this.handleChange('multiline')}
-        //   className={classes.textField}
+        onChange={this.handleTextChange}
           margin="normal"
           
         />

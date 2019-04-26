@@ -9,7 +9,18 @@ import Button from '@material-ui/core/Button';
 
 class NewDreamStep2 extends Component {
 
+state = {
+    tempScore: 0
+}
+
+handleTempChange = (event) => {
+    this.setState({
+        tempScore: event.target.value
+    })
+}
+
 nextStep = () => {
+    this.props.dispatch({type:'ADD_TEMP_SCORE', payload: this.state.tempScore})
     this.props.history.push('/step3')
 }
 lastStep = () => {
@@ -17,17 +28,19 @@ lastStep = () => {
 }
 
     render() {
+        console.log(`this is state in new dream step 2`, this.state);
+        
         return(
             <>
             <h1>How Are You Feeling?</h1>
             <h2>(temperature)</h2>
 <form>
   Cold 
-  <input type="radio" name="temp" value="1" /> 
-  <input type="radio" name="temp" value="2" /> 
-  <input type="radio" name="temp" value="3" /> 
-  <input type="radio" name="temp" value="4" /> 
-  <input type="radio" name="temp" value="5" /> 
+  <input onChange={this.handleTempChange} type="radio" name="temp" value="1" /> 
+  <input onChange={this.handleTempChange} type="radio" name="temp" value="2" /> 
+  <input onChange={this.handleTempChange} type="radio" name="temp" value="3" /> 
+  <input onChange={this.handleTempChange} type="radio" name="temp" value="4" /> 
+  <input onChange={this.handleTempChange} type="radio" name="temp" value="5" /> 
   Warm
   </form>
         <Button onClick={this.lastStep}>Back</Button>
