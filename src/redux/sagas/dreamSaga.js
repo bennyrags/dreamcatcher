@@ -3,6 +3,7 @@ import { put, takeLatest } from 'redux-saga/effects';
 
 // worker Saga: will be fired on "FETCH_DREAMS" actions
 function* fetchDream(action) {
+console.log(`this is the fetchdream function, here is the action`, action.payload)
   try {
     const config = {
       headers: { 'Content-Type': 'application/json' },

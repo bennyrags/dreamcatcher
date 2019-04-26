@@ -1,4 +1,6 @@
 const dreamReducer = (state = [], action) => {
+ console.log(`inside dreamReducer here is action.payload`, action.payload);
+ 
   switch (action.type) {
     case 'SET_DREAM':
       return action.payload;

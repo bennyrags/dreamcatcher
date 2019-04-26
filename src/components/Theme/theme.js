@@ -30,8 +30,11 @@ goToAllThemes = () => {
     this.props.history.push('/themes');
 }
 
-deleteTheme = () => {
-    console.log(`inside deleteTheme`);
+deleteTheme = (id) => {
+    
+    console.log(`inside deleteTheme, here is id`, id);
+    this.props.dispatch({type:'DELETE_THEME', payload:id});
+    this.props.history.push('/themes')
 }
 
 editTheme = () => {
@@ -54,7 +57,6 @@ handleTextUpdate = (event) => {
 }
 
 saveTheme = () => {
-
 
 this.props.dispatch({type:'UPDATE_THEME', payload:this.state.editedTheme});
 this.setState({
@@ -102,7 +104,7 @@ Theme
                   <p> {i.theme_description}</p>
                   <Button onClick={this.editTheme}>Edit Theme Description</Button>
                     <br />
-                  <Button onClick={()=> this.deleteDream}>Delete</Button>
+                  <Button onClick={() => this.deleteTheme(i.id)}>Delete</Button>
                   </section>
                   }
                   

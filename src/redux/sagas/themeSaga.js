@@ -31,8 +31,8 @@ function* addNewTheme(action) {
   
   try {
   let newTheme = action.payload;
-
   yield axios.post(`api/Theme`, newTheme);
+  
 }
 
 catch (error) {
@@ -57,7 +57,20 @@ catch (error) {
 }
 }
 
-
+function* deleteTheme(action) {
+  console.log(`this is action.payload in deleteTheme`, action.payload);
+  
+  
+  try {
+    let id = action.payload;
+    yield axios.delete(`api/Theme/${id}`);
+    yield put({ type: 'SET_THEME', payload: id });
+    
+  }
+  catch (error) {
+    console.log('error')
+  }
+}
 
 
 
@@ -66,6 +79,7 @@ function* themeSaga() {
   yield takeLatest('FETCH_THEME', fetchTheme);
   yield takeLatest('ADD_NEW_THEME', addNewTheme);
   yield takeLatest('UPDATE_THEME', updateTheme);
+  yield takeLatest('DELETE_THEME', deleteTheme);
 }
 
 export default themeSaga;

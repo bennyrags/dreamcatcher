@@ -58,5 +58,21 @@ pool.query(queryText, [newTheme.theme_name, newTheme.theme_description, newTheme
 })
 })
 
+router.delete('/:id', (req,res,next) =>{
+  const id = req.params.id;
+  const sqlText = `DELETE FROM "themes" WHERE "id" = $1;
+  `;
+  pool.query(sqlText, [id])
+  .then(response=>{
+    res.sendStatus(200);
+  })
+  .catch(error=>{
+    res.sendStatus(500);
+    console.log(`Error deleting theme, here is error:`, error);
+    
+  })
+})
+
+
 
 module.exports = router;
