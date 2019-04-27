@@ -28,8 +28,40 @@ console.log(`this is the fetchdream function, here is the action`, action.payloa
 
 function* addNewDream(action) {
   console.log(`in addNewDream saga, here is action.payload.dreamInfo`, action.payload.dreamInfo);
-  console.log(`in addNewDream saga, here is action.payload.themes`, action.payload.themes);
-  
+  try {
+  yield axios.post('/api/dream', action.payload.dreamInfo);
+  yield put({type:'FETCH_DREAMS'});
+  //how do get the most recent dream id from this? to use in something like this?
+
+  /*
+
+yield (action.payload.dreamInfo) = > {
+  axios.post('api/dream', action.payload.dreamInfo)
+  .then(response => {
+    return response.data.message
+  }
+    
+  )
+  .catch(error => {
+    console.log(`error when trying to addNEWDream in crazy func`)
+  })
+}
+
+
+  need to get the id in there somehow....
+yield (id) => {
+  for (i=0; i<dream.theme.length; i++) 
+  {
+    axios.post('/api/dream', action.payload)
+  }
+}
+  */
+}
+catch (error) {
+  console.log(`error in adding new dream. here is error:`, error);
+}
+
+//maybe do the below with await 
 //ok i think what i have to do here is a series of yields. 
 
 //yield 1 - post payload.dream info to server. get dream id back as response. 

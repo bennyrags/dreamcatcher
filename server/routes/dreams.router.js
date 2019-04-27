@@ -10,7 +10,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 // is that the password gets encrypted before being inserted
 router.get('/:id', rejectUnauthenticated, (req, res, next) => {  
   const id = req.params.id;
-    const queryText = `SELECT * FROM "dreams" WHERE "user_id" = $1`;
+    const queryText = `SELECT * FROM "dreams" WHERE "user_id" = $1 ORDER BY "date" DESC`;
     pool.query(queryText, [id])
     .then( response => {
         let dreams = response.rows;

@@ -1,12 +1,13 @@
 
 const newDream = {
-    themes: [],
     dreamInfo: {
         user_id: 0,
         date: new Date(),
         description: '',
         score_temp: 0,
         score_mood: 0,
+        themes: [],
+
     }
 }
 
@@ -15,7 +16,6 @@ const dreamAddReducer = (state = newDream, action) => {
 
     if (action.type === 'ADD_DREAM_DESCRIPTION') {
         return {
-                ...state, 
                 dreamInfo: {
             ...state.dreamInfo,
             user_id: Number(action.payload.id),
@@ -26,7 +26,6 @@ const dreamAddReducer = (state = newDream, action) => {
 
     else if (action.type === 'ADD_TEMP_SCORE') {
         return {
-            ...state, 
             dreamInfo: {
         ...state.dreamInfo,
             score_temp: Number(action.payload),
@@ -35,7 +34,6 @@ const dreamAddReducer = (state = newDream, action) => {
     }
     else if (action.type === 'ADD_MOOD_SCORE') {
         return {
-            ...state, 
             dreamInfo: {
         ...state.dreamInfo,
             score_mood: Number(action.payload),
@@ -45,9 +43,11 @@ const dreamAddReducer = (state = newDream, action) => {
 
     else if (action.type === 'ADD_THEMES') {
         return {
-            ...state,
+            dreamInfo: {
+            ...state.dreamInfo,
             themes: action.payload,
         }
+    }
     }
 
     else if (action.type === 'SUBMIT_DREAM') {
