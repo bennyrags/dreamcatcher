@@ -25,7 +25,7 @@ GROUP BY dreams.id;`;
     console.log(`Error GETTING dreams:`, error);
     }
     );
-})
+});
 
 // router.post('/', rejectUnauthenticated, (req,res,next) => {
 // const dream = req.body;
@@ -58,7 +58,48 @@ GROUP BY dreams.id;`;
 // console.log(`This is an error when posting new dream`, error);
 // })
 //});
+//Lili method
+router.post('/', rejectUnauthenticated, async (req,res) => {
+    const client = await pool.connect();
+try {
+
+const dream = {
+    date: `12/24/19`,
+    description: "testing lilis method",
+    score_mood: 3,
+    score_temp: 2,
+    user_id: 5
+}
+
+const themeInfo = [3,4,5];
+const dreamQuery = `INSERT INTO "dreams" ("user_id","date","description","score_temp","score_mood") VALUES ($1,$2,$3,$4,$5) RETURNING id`;
+const themeQuery = `INSERT INTO "themes_dreams" ("theme_id","dream_id") VALUES ($1,$2)`;
+
+await client.query('BEGIN')
+const dreamResults = await client.query(dreamQuery, [dream.user_id, dream.date, dream.description, dream.score_temp, dream.score_mood]);
+const dreamId = dreamResults.rows[0].id;
 
 
+    for (let i=0; i < themeInfo.length; i++) {
+        await client.query(themeQuery, [themeInfo[i], dreamId]);
+    }
+
+await client.query('COMMIT')
+res.sendStatus(201)
+
+}
+catch (error) {
+res.sendStatus(500);
+console.log(`this is the error when trying to post `, error);
+
+}
+
+finally {
+client.release()
+
+}
+
+
+});
 
 module.exports = router;
