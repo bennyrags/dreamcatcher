@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 class NewDreamStep2 extends Component {
 
 state = {
-    tempScore: 0
+    tempScore: this.props.temp
 }
 
 handleTempChange = (event) => {
@@ -25,6 +25,20 @@ nextStep = () => {
 }
 lastStep = () => {
     this.props.history.push('/step1')
+}
+
+componentDidMount() {
+    if (this.state.tempScore !=0 || this.state.tempScore !='')  {
+        let input = document.getElementsByTagName('input');
+        console.log('this is input.length', input.length);
+        console.log('this is this.props.temp', this.props.temp );
+        for (let i=0; i < input.length; i++) {
+            if (input[i].value == this.props.temp) {
+                input[i].checked = true;
+
+            }
+        }
+    }
 }
 
     render() {
@@ -54,6 +68,7 @@ lastStep = () => {
 
 const mapStateToProps = state => ({
     user: state.user,
+    temp: state.dreamAdd.dreamInfo.score_temp
   });
   
   export default connect(mapStateToProps)(NewDreamStep2);

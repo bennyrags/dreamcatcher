@@ -115,6 +115,6 @@ font-family: 'Loved By The King', sans-serif;
 
 
 .overFlowDiv {
-    height:350px;
+    max-height:350px;
     overflow: scroll;
 }

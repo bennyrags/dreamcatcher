@@ -42,7 +42,7 @@ lastStep = () => {
             
             <>
             <h1>Your Dreams</h1>
-            <section class="overFlowDiv">
+            <section className="overFlowDiv">
 <Table>
     <TableHead>
         <TableRow>

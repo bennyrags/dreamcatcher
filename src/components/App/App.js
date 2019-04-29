@@ -25,6 +25,7 @@ import NewDreamStep3 from '../NewDreamStep3/NewDreamStep3'
 import NewDreamStep4 from '../NewDreamStep4/NewDreamStep4'
 import DreamsList from '../DreamsList/DreamsList'
 import SubmitDream from '../SubmitDream/SubmitDream'
+import SubmittedDream from '../SubmittedDream/SubmittedDream'
 import Dream from '../Dream/Dream'
 import ThemesList from '../ThemesList/ThemesList'
 import ThemeAddNew from '../ThemeAddNew/ThemeAddNew'
@@ -120,6 +121,11 @@ class App extends Component {
               exact
               path="/submitDream"
               component={SubmitDream}
+            />
+            <ProtectedRoute
+              exact
+              path="/submittedDream"
+              component={SubmittedDream}
             />
 
 

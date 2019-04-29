@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 class NewDreamStep3 extends Component {
 
     state = {
-        moodScore: 0
+        moodScore: this.props.mood
     }
     
     handleMoodChange = (event) => {
@@ -24,6 +24,20 @@ nextStep = () => {
 
 lastStep = () => {
     this.props.history.push('/step2')
+}
+
+componentDidMount() {
+    if (this.state.moodScore !=0 || this.state.moodScore !='')  {
+        let input = document.getElementsByTagName('input');
+        console.log('this is input.length', input.length);
+        console.log('this is this.props.mood', this.props.mood );
+        for (let i=0; i < input.length; i++) {
+            if (input[i].value == this.props.mood) {
+                input[i].checked = true;
+
+            }
+        }
+    }
 }
 
     render() {
@@ -51,6 +65,7 @@ lastStep = () => {
 
 const mapStateToProps = state => ({
     user: state.user,
+    mood: state.dreamAdd.dreamInfo.score_mood
   });
   
   export default connect(mapStateToProps)(NewDreamStep3);

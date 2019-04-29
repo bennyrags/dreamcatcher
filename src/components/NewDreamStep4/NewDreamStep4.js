@@ -13,14 +13,31 @@ class NewDreamStep4 extends Component {
     }
 
 addThemes = (event) => {
-    //how to add themes into an array w/o replacing each time I enter a value
-    //iterate rather?
+//BUG - UNSELECTING BOX
+//need to add an if statement to make sure the click is not UNSELECTING the checkbox. 
+// if (event.target.checked !==true) {
+//     console.log(`this eventTarget has been unchecked`);
+//     let themeIds = this.props.themesSelected
+//     //do loop to find index of number in ThemeIDs array that matches unchecked value, use that index to slice out number
+//     for (let i=0; i < themeIds.length; i++ ) {
+//         if (event.target.value == themeIds[i]) {
+//             this.setState({
+//             themeIds: themeIds.slice(i, 0)
+//             })
+            
+//             console.log(`themeIds afte slice`, themeIds);
+//         }
+//     }
+// }
+
+
     this.setState({
         addThemes: {
             themeIDs: [...this.state.addThemes.themeIDs, Number(event.target.value)]
         }
       
     })
+
 }
 
 goToAddTheme = () => {
@@ -44,7 +61,23 @@ getThemes = () => {
 
 componentDidMount() {
 this.getThemes();
+
+// //to make sure checked themes remain checked until submit
+//     if (this.state.addThemes.themeIDs !==[])  {
+//         let input = document.getElementsByTagName('input');
+//                for (let i=0; i < input.length; i++) {
+//             if (this.props.themesSelected.includes(Number(input[i].value))) {
+//                 input[i].checked = true;
+
+//             }
+//         }
+//     }
 }
+
+
+
+
+
 
     render() {
         console.log(this.state)
@@ -52,7 +85,7 @@ this.getThemes();
         return(
             <>
             <h1>Pick Themes</h1>
-          
+          <section className='overFlowDiv'>
           <form>
            <ul>
             {this.props.themes.map(theme=> 
@@ -64,6 +97,7 @@ this.getThemes();
                </ul>
 
                </form>
+               </section>
                <Button onClick={this.goToAddTheme}>Add Theme</Button>
 
         <Button onClick={this.lastStep}>Back</Button>
@@ -79,6 +113,8 @@ this.getThemes();
 const mapStateToProps = state => ({
     user: state.user,
     themes: state.themes,
+   // themesSelected: state.dreamAdd.themes
+
   });
   
   export default connect(mapStateToProps)(NewDreamStep4);
