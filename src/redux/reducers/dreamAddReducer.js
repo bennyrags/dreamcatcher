@@ -1,12 +1,12 @@
 
 const newDream = {
+    themes: [],
     dreamInfo: {
         user_id: 0,
         date: new Date(),
         description: '',
         score_temp: 0,
         score_mood: 0,
-        themes: [],
 
     }
 }
@@ -43,11 +43,11 @@ const dreamAddReducer = (state = newDream, action) => {
 
     else if (action.type === 'ADD_THEMES') {
         return {
-            dreamInfo: {
-            ...state.dreamInfo,
-            themes: action.payload,
+            themes: action.payload, 
+            dreamInfo:{
+            ...state.dreamInfo
+            }
         }
-    }
     }
 
     else if (action.type === 'SUBMIT_DREAM') {

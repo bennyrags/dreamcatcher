@@ -27,10 +27,10 @@ console.log(`this is the fetchdream function, here is the action`, action.payloa
 }
 
 function* addNewDream(action) {
-  console.log(`in addNewDream saga, here is action.payload.dreamInfo`, action.payload.dreamInfo);
+  console.log(`in addNewDream saga, here is action.payload`, action.payload);
   try {
-  yield axios.post('/api/dream');
-  yield put({type:'FETCH_DREAMS'});
+  yield axios.post('/api/dream', action.payload);
+  //yield put({type:'FETCH_DREAMS'});
   //how do get the most recent dream id from this? to use in something like this?
 
   /*
