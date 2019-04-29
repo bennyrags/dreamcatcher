@@ -8,7 +8,7 @@ class NewDreamStep1 extends Component {
 
 state = {
   newDream: {
-    description: '',
+    description: this.props.description,
    id: this.props.user.id
 }
 }
@@ -46,6 +46,7 @@ nextStep = () => {
           variant='outlined'
         onChange={this.handleTextChange}
           margin="normal"
+          value={this.state.newDream.description}
           
         />
         <Button onClick={this.nextStep}>Next</Button>
@@ -58,6 +59,7 @@ nextStep = () => {
 
 const mapStateToProps = state => ({
     user: state.user,
+    description: state.dreamAdd.dreamInfo.description
   });
   
   export default connect(mapStateToProps)(NewDreamStep1);

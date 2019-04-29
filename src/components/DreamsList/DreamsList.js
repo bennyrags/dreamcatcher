@@ -9,6 +9,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import moment from 'moment';
+import '../App/App.css'
+
 //import { Tab } from '@material-ui/core';
 
 class DreamList extends Component {
@@ -40,6 +42,7 @@ lastStep = () => {
             
             <>
             <h1>Your Dreams</h1>
+            <section class="overFlowDiv">
 <Table>
     <TableHead>
         <TableRow>
@@ -68,7 +71,7 @@ lastStep = () => {
         )}
     </TableBody>
 </Table>
-
+</section>
         <Button onClick={this.lastStep}>Back</Button>
         <Button onClick={this.nextStep}>Save</Button>
 

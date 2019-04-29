@@ -9,8 +9,8 @@ import Button from '@material-ui/core/Button';
 // import TableRow from '@material-ui/core/TableRow';
 // import { Tab } from '@material-ui/core';
 import './ThemeList.css'
+import '../App/App.css'
 class ThemeList extends Component {
-
 nextStep = () => {
     console.log('in nextStep');
    // this.props.history.push('/step5')
@@ -39,7 +39,7 @@ componentDidMount() {
         return(
             <>
             <h1>Your Themes</h1>
-
+<section className='overFlowDiv'>
             <ul>
             {this.props.themes.map(theme=>
                 <li onClick={()=>this.goToTheme(theme.id)} key={theme.id}>
@@ -49,7 +49,7 @@ componentDidMount() {
                 )}
                 
             </ul>
-
+</section>
 
         <Button onClick={this.lastStep}>Back</Button>
 
