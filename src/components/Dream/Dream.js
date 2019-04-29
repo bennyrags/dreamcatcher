@@ -85,16 +85,27 @@ class Dream extends Component {
         console.log('this is this.props.dream,', this.props.dream)
         return (
             <>
-                <h2>
-                    Dream
-            </h2>
+                
 
                 {this.props.dream.map(i =>
                     <section key={i.id} className='dreamContainer'>
-                        <h3>{moment(i.date).format('L')}</h3>
+                <h2>
+                    Dream, {moment(i.date).format('L')}
+            </h2>
 
+            <Grid container
+            direction='row'
+            justify='space-evenly'
+            alignItems='flex-end'
+            >
+            
+            <Grid item>
                         <h4>Mood Score: {i.score_mood}</h4>
+                        </Grid>
+                        <Grid item>
                         <h4>Temp Score: {i.score_temp}</h4>
+                       </Grid>
+                        </Grid>
                         <h4>Themes: {i.string_agg}</h4>
                 {this.state.editedDream.editing === true ? 
                      <section>
