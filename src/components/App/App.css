@@ -41,9 +41,17 @@ h1, h2{
     font-style: italic;
     text-align:center;
 text-shadow:1px 1px 3px rgba(1,1,1,.3); 
-color:white;
 margin: .5em 0 0;
 }
+
+h1,h2,h3,h4,h5,h6,p,li,td,th,textarea,.whiteOverride {
+    color:white !important;
+}
+
+h3,h4,h5,h6,p,li,td,th,textarea {
+    font-family: 'Raleway', sans-serif;
+}
+
 
 .container h1, h2 {
     font-weight: 100;

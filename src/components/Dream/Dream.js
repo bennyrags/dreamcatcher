@@ -97,6 +97,7 @@ class Dream extends Component {
                 {this.state.editedDream.editing === true ? 
                      <section>
                      <TextField
+                        className='whiteOverride'
                          value={this.state.editedDream.description}
                          onChange={this.handleTextUpdate}
                          multiline

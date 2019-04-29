@@ -88,11 +88,11 @@ method:'GET'
 }
 
   newDream = () => {
-   this.props.history.push('/step1'); 
+   this.props.history.push('/dreams'); 
   }
 
   goToDreams = () => {
-    this.props.history.push('/dreams')
+    this.props.history.push('/themes')
   }
 
 
@@ -123,6 +123,13 @@ method:'GET'
 <h3>
 Looks like you've already entered a dream for today. 
 </h3>  
+<Button onClick={this.newDream} className='mainButton'>
+See Dreams
+  </Button>
+ 
+  <Button onClick={this.goToDreams} className='mainButton'>
+See Themes
+  </Button>
 
   </section> 
   :
@@ -137,8 +144,6 @@ See Dreams
   </section>
  
 }
-  {/* <p>Your ID is: {props.user.id}</p> */}
-  <LogOutButton className="log-in" />
 </div>
 )
 }
