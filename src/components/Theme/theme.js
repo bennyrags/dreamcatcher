@@ -32,7 +32,7 @@ class Theme extends Component {
 
     deleteTheme = (id) => {
 
-        console.log(`inside deleteTheme, here is id`, id);
+       // console.log(`inside deleteTheme, here is id`, id);
         this.props.dispatch({ type: 'DELETE_THEME', payload: id });
         this.props.history.push('/themes')
     }

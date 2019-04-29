@@ -28,11 +28,26 @@ GROUP BY dreams.id;`;
 });
 
 
-router.delete('/:id', (req,res,next) =>{
+router.delete('/:id', rejectUnauthenticated, (req,res,next) =>{
     const id = req.params.id;
     const sqlText = `DELETE FROM "dreams" WHERE "id" = $1;
     `;
     pool.query(sqlText, [id])
+    .then(response=>{
+      res.sendStatus(200);
+    })
+    .catch(error=>{
+      res.sendStatus(500);
+      console.log(`Error deleting dream, here is error:`, error);
+      
+    })
+  })
+router.put('/:id',rejectUnauthenticated, (req,res,next) =>{
+    const id = req.params.id;
+    const description = req.body.description;
+    const sqlText = `UPDATE "dreams" SET "description"=$1 WHERE "id" = $2;
+    `;
+    pool.query(sqlText, [description, id])
     .then(response=>{
       res.sendStatus(200);
     })

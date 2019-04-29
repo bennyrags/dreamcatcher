@@ -54,12 +54,12 @@ function* deleteDream(action) {
 
 }
 
-function* editDream(action) {
-  console.log('in editDream saga');
-
+function* updateDream(action) {
+  console.log('in editDream saga, here is action', action);
+let editedDream = action.payload;
   try {
-    // yield axios.put(`api/dream/${editedTheme.id}`, editedTheme);
-    // yield put({type:'FETCH_DREAM', payload: editedDream.id});
+    yield axios.put(`api/dream/${editedDream.id}`, editedDream);
+   yield put({type:'FETCH_DREAM', payload: editedDream.id});
   
   }
   catch (error) {
@@ -72,7 +72,7 @@ function* dreamSaga() {
   yield takeLatest('FETCH_DREAM', fetchDream);
   yield takeLatest('ADD_NEW_DREAM', addNewDream);
   yield takeLatest('DELETE_DREAM', deleteDream);
-  yield takeLatest('EDIT_DREAM', editDream);
+  yield takeLatest('UPDATE_DREAM', updateDream);
 }
 
 export default dreamSaga;
