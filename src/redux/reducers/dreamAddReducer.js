@@ -12,7 +12,7 @@ const newDream = {
 }
 
 const dreamAddReducer = (state = newDream, action) => {
-    console.log(`inside dreamAddReducer here is action.payload`, action.payload);
+    //console.log(`inside dreamAddReducer here is action.payload`, action.payload);
 
     if (action.type === 'ADD_DREAM_DESCRIPTION') {
         return {
@@ -52,7 +52,7 @@ const dreamAddReducer = (state = newDream, action) => {
 
     else if (action.type === 'SUBMIT_DREAM') {
         //LAST type, SEND TO SAGA
-        console.log(`submit dream clicked, here's state:`, state);
+       // console.log(`submit dream clicked, here's state:`, state);
 
         return state;
 

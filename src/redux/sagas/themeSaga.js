@@ -64,7 +64,7 @@ function* deleteTheme(action) {
   try {
     let id = action.payload;
     yield axios.delete(`api/Theme/${id}`);
-    yield put({ type: 'SET_THEME', payload: id });
+    //yield put({ type: 'SET_THEME', payload: id });
     
   }
   catch (error) {
