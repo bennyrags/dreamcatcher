@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button'
 import moment from 'moment';
 import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
 
 class Theme extends Component {
 
@@ -31,10 +32,11 @@ class Theme extends Component {
     }
 
     deleteTheme = (id) => {
-
-       // console.log(`inside deleteTheme, here is id`, id);
-        this.props.dispatch({ type: 'DELETE_THEME', payload: id });
-        this.props.history.push('/themes')
+        if (window.confirm('Are you sure you want to delete this?')) {
+            // console.log(`inside deleteTheme, here is id`, id);
+            this.props.dispatch({ type: 'DELETE_THEME', payload: id });
+            this.props.history.push('/themes')
+        }
     }
 
     editTheme = (description) => {
@@ -103,12 +105,21 @@ class Theme extends Component {
                             <section>
                                 <p> {i.theme_description}</p>
                                 <Button onClick={() => this.editTheme(i.theme_description)}>Edit Theme Description</Button>
-                                <br />
-                                <Button onClick={() => this.deleteTheme(i.id)}>Delete</Button>
+                                <Grid container
+                                    direction='row'
+                                    justify='space-evenly'
+                                    alignItems='flex-end'
+                                >
+                                    <Grid item>
+                                        <Button onClick={() => this.deleteTheme(i.id)}>Delete</Button>
+                                    </Grid>
+                                    <Grid item>
+                                        <Button onClick={this.goToAllThemes}>All Themes</Button>
+                                    </Grid>
+                                </Grid>
                             </section>
                         }
 
-                        <Button onClick={this.goToAllThemes}>All Themes</Button>
                     </section>
                 )
 

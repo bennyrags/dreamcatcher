@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 //import {HashRouter as Router} from 'react-router-dom';
+import Grid from '@material-ui/core/Grid'
 
 class NewDreamStep3 extends Component {
 
@@ -54,8 +55,19 @@ componentDidMount() {
   <input onChange={this.handleMoodChange} type="radio" name="temp" value="5" /> 
   Agitated
   </form>
+  <Grid container
+  direction='row'
+  justify='space-evenly'
+  alignItems='flex-end'
+  >
+  <Grid item>
         <Button onClick={this.lastStep}>Back</Button>
+        </Grid>
+        <Grid item>
         <Button onClick={this.nextStep}>Next</Button>
+        </Grid>
+        </Grid>
+
         </>
         )
     }

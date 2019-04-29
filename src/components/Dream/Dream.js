@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import Button from '@material-ui/core/Button'
 import moment from 'moment';
 import TextField from '@material-ui/core/TextField'
+import Grid from '@material-ui/core/Grid'
 
 class Dream extends Component {
 
@@ -35,16 +36,17 @@ class Dream extends Component {
     }
 
     deleteDream = (id) => {
+        if (window.confirm('Are you sure you want to delete this?')) {
         this.props.dispatch({ type: 'DELETE_DREAM', payload: id });
         this.props.history.push('/dreams')
     }
+}
     editDream = (description) => {
         this.setState({
             editedDream: {
                 ...this.state.editedDream,
                 editing: true,
                 description: description
-
             }
         })
     }
@@ -107,14 +109,27 @@ class Dream extends Component {
                      <Button onClick={this.saveDream}>Save Dream</Button>
                  </section>
                     :
-
+                        <>
                         <p>
                             {i.description}
                         </p>
+                   <Button onClick={() => this.editDream(i.description)}>Edit Description</Button>
+                   <Grid container
+                    direction='row'
+                    justify='space-evenly'
+                    alignItems='flex-end'
+                   
+                   >
+                    <Grid item>
+                   <Button onClick={() => this.deleteDream(i.id)}>Delete</Button>
+                   </Grid>
+                   <Grid item>
+                   <Button onClick={this.goToAllDreams}>All Dreams</Button>
+                   </Grid>
+                   </Grid>
+                   </>
                 }
-                        <Button onClick={() => this.editDream(i.description)}>Edit Description</Button>
-                        <Button onClick={() => this.deleteDream(i.id)}>Delete</Button>
-                        <Button onClick={this.goToAllDreams}>All Dreams</Button>
+                     
                     </section>
                 )
 

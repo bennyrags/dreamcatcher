@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 // import Radio from '@material-ui/core/Radio';
 // import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 // import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
+import Grid from '@material-ui/core/Grid'
 
 class NewDreamStep2 extends Component {
 
@@ -57,8 +58,18 @@ componentDidMount() {
   <input onChange={this.handleTempChange} type="radio" name="temp" value="5" /> 
   Warm
   </form>
+  <Grid container
+  direction='row'
+  justify='space-evenly'
+  alignItems='flex-end'
+  >
+  <Grid item>
         <Button onClick={this.lastStep}>Back</Button>
+        </Grid>
+        <Grid item>
         <Button onClick={this.nextStep}>Next</Button>
+        </Grid>
+        </Grid>
         </>
         )
     }

@@ -9,6 +9,7 @@ import moment from 'moment';
 // and then instead of `props.user.username` you could use `user.username`
 import axios from 'axios';
 import ThemeAddNew from '../ThemeAddNew/ThemeAddNew';
+import Grid from '@material-ui/core/Grid';
 
 
 class UserPage extends Component {
@@ -119,28 +120,46 @@ method:'GET'
   </h1>
   <h2>Today is {moment().format('dddd')}, {moment().format('MMMM Do YYYY')}</h2>
 {this.state.helloConditionals.lastDream === this.state.helloConditionals.todaysDate ?
-<section className='newDreamButtons'>
+<section className='containerInner newDreamButtons'>
 <h3>
 Looks like you've already entered a dream for today. 
 </h3>  
+<Grid container
+  direction='row'
+  justify='space-evenly'
+  alignItems='flex-end'
+  >
+  <Grid item>
 <Button onClick={this.newDream} className='mainButton'>
 See Dreams
   </Button>
- 
+  </Grid>
+  <Grid item>
   <Button onClick={this.goToDreams} className='mainButton'>
 See Themes
   </Button>
+  </Grid>
+  </Grid>
 
   </section> 
   :
-  <section className='newDreamButtons'>
+  <section className='containerInner, newDreamButtons'>
+  <Grid container
+  direction='row'
+  justify='space-evenly'
+  alignItems='flex-end'
+  >
+  <Grid item>
   <Button onClick={this.newDream} className='mainButton'>
     Add new Dream
   </Button>
- 
+  </Grid>
+<Grid item>
   <Button onClick={this.goToDreams} className='mainButton'>
 See Dreams
   </Button>
+  </Grid>
+  </Grid>
   </section>
  
 }

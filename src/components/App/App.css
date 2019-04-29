@@ -72,6 +72,11 @@ h3,h4,h5,h6,p,li,td,th,textarea {
     text-align:center;
 }
 
+.containerInner {
+width:95%;
+margin:auto;
+}
+
 .nav {
     top:0; 
     position: fixed;
@@ -125,4 +130,5 @@ font-family: 'Loved By The King', sans-serif;
 .overFlowDiv {
     max-height:350px;
     overflow: scroll;
+    width:95%;
 }

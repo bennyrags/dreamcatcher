@@ -10,15 +10,15 @@ import Button from '@material-ui/core/Button';
 // import { Tab } from '@material-ui/core';
 import './ThemeList.css'
 import '../App/App.css'
+import Grid from '@material-ui/core/Grid'
 class ThemeList extends Component {
-nextStep = () => {
-    console.log('in nextStep');
-   // this.props.history.push('/step5')
-}
-
-lastStep = () => {
-    this.props.history.push('/step4')
-}
+    back = () => {
+        this.props.history.goBack();
+    }
+    
+    home = () => {
+        this.props.history.push('/')
+    }
 
 getThemes = () => {
     console.log(`in getThemes`);
@@ -50,9 +50,18 @@ componentDidMount() {
                 
             </ul>
 </section>
-
-        <Button onClick={this.lastStep}>Back</Button>
-
+<Grid container
+  direction='row'
+  justify='space-evenly'
+  alignItems='flex-end'
+  >
+  <Grid item>
+<Button onClick={this.back}>Back</Button>
+        </Grid>
+        <Grid item>
+        <Button onClick={this.home}>Home</Button>
+        </Grid>
+        </Grid>
         </>
         )
     }

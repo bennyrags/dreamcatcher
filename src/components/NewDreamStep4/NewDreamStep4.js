@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 //import TextField from '@material-ui/core/TextField'
 //import {HashRouter as Router} from 'react-router-dom';
-
+import Grid from '@material-ui/core/Grid'
 class NewDreamStep4 extends Component {
 
     state = {
@@ -99,10 +99,19 @@ this.getThemes();
                </form>
                </section>
                <Button onClick={this.goToAddTheme}>Add Theme</Button>
-
+               <Grid container
+  direction='row'
+  justify='space-evenly'
+  alignItems='flex-end'
+  >
+  <Grid item>
         <Button onClick={this.lastStep}>Back</Button>
+        </Grid>
+        <Grid item>
         <Button onClick={this.nextStep}>Next</Button>
-
+        </Grid>
+        </Grid>
+       
         </>
         )
     }

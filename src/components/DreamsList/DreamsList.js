@@ -8,6 +8,7 @@ import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
+import Grid from '@material-ui/core/Grid'
 import moment from 'moment';
 import '../App/App.css'
 
@@ -17,7 +18,6 @@ class DreamList extends Component {
 
     ///this will handle the click to the for going to the individual dream item.
     handleClick = (id) => {
-        console.log('this is the click for dream, here is id', id);
         this.props.history.push(`/dream?id=${id}`)
 
     }
@@ -28,18 +28,17 @@ componentDidMount() {
 
 }
 
-nextStep = () => {
-    console.log('in nextStep');
-   // this.props.history.push('/step5')
+
+back = () => {
+    this.props.history.goBack();
 }
 
-lastStep = () => {
-    this.props.history.push('/step4')
+home = () => {
+    this.props.history.push('/')
 }
 
     render() {
         return(
-            
             <>
             <h1>Your Dreams</h1>
             <section className="overFlowDiv">
@@ -56,12 +55,20 @@ lastStep = () => {
     </TableHead>
     <TableBody>
        {this.props.dreams.map(dream => {
-        
+        //only want the first few words to be displayed
         let dreamSentance = dream.description.split(' ');
         let firstFewWords = '';
+        if (dreamSentance.length > 3) {
             for (let i=0; i < 4; i++) {
                 firstFewWords += ' ' + dreamSentance[i];
             }
+        }
+        else {
+            for (let i=0; i < dreamSentance.length; i++) {
+                firstFewWords += ' ' + dreamSentance[i];
+            }
+           
+        }
 
         return <TableRow onClick={()=>this.handleClick(dream.id)} key={dream.id}>
           <TableCell>{moment(dream.date).format('L')}</TableCell>  
@@ -72,10 +79,19 @@ lastStep = () => {
     </TableBody>
 </Table>
 </section>
-        <Button onClick={this.lastStep}>Back</Button>
-        <Button onClick={this.nextStep}>Save</Button>
-
-        </>
+<Grid container
+  direction='row'
+  justify='space-evenly'
+  alignItems='flex-end'
+  >
+  <Grid item>
+        <Button onClick={this.back}>Back</Button>
+        </Grid>
+        <Grid item>
+        <Button onClick={this.home}>Home</Button>
+        </Grid>
+        </Grid>
+            </>
         )
     }
 

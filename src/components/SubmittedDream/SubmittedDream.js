@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
 //import {HashRouter as Router} from 'react-router-dom';
-
+import Grid from '@material-ui/core/Grid';
 class SubmittedDream extends Component {
 
 home = () => {
@@ -21,10 +21,21 @@ dreamList = () => {
            <p>
                Your dream has been saved. 
            </p>
-
-        <Button onClick={this.home}>Home</Button>
+           <Grid container
+  direction='row'
+  justify='space-evenly'
+  alignItems='flex-end'
+  >
+           <Grid item>
+           <Button onClick={this.home}>Home</Button>
+        </Grid>
+        <Grid item>
         <Button onClick={this.dreamList}>See Dreams</Button>
+        </Grid>
+        </Grid>
+        
 
+       
         </>
         )
     }
