@@ -48,16 +48,18 @@ componentDidMount() {
 if (this.props.themes.length === 0) {
     this.updateView = 
     <>
+    <section className='containerMiddle'>
     <p>
         You don't have any themes currently. Add one by clicking on the button below.
     </p>
             <Button onClick={this.goToAddTheme}>Add Theme</Button>
+            </section>
 </>
 }
 else {
     this.updateView = 
     <>
-    <section className='overFlowDiv'>
+    <section className='overFlowDiv containerMiddle'>
     <ul>
     {this.props.themes.map(theme=>
         <li onClick={()=>this.goToTheme(theme.id)} key={theme.id}>
@@ -68,6 +70,7 @@ else {
         
     </ul>
 </section>
+<section className='containerBottom'>
 <Grid container
 direction='row'
 justify='space-evenly'
@@ -80,12 +83,15 @@ alignItems='flex-end'
 <Button onClick={this.home}>Home</Button>
 </Grid>
 </Grid>
+</section>
 </>
 }
 
         return(
             <>
+            <div className='containerHeader'>
             <h1>Your Themes</h1>
+            </div>
             {this.updateView}
         </>
         )
