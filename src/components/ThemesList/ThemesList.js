@@ -11,7 +11,11 @@ import Button from '@material-ui/core/Button';
 import './ThemeList.css'
 import '../App/App.css'
 import Grid from '@material-ui/core/Grid'
+
+let updateView = '';
+
 class ThemeList extends Component {
+    
     back = () => {
         this.props.history.goBack();
     }
@@ -30,38 +34,59 @@ goToTheme = (id) => {
     this.props.history.push(`/theme?id=${id}`)
 }
 
+goToAddTheme = () => {
+    this.props.history.push('/theme-new')
+}
+
+
 componentDidMount() {
     this.getThemes();
 }
 
 
     render() {
+if (this.props.themes.length === 0) {
+    this.updateView = 
+    <>
+    <p>
+        You don't have any themes currently. Add one by clicking on the button below.
+    </p>
+            <Button onClick={this.goToAddTheme}>Add Theme</Button>
+</>
+}
+else {
+    this.updateView = 
+    <>
+    <section className='overFlowDiv'>
+    <ul>
+    {this.props.themes.map(theme=>
+        <li onClick={()=>this.goToTheme(theme.id)} key={theme.id}>
+        <h3>{theme.theme_name}</h3>
+        <p>{theme.theme_description}</p>
+        </li>
+        )}
+        
+    </ul>
+</section>
+<Grid container
+direction='row'
+justify='space-evenly'
+alignItems='flex-end'
+>
+<Grid item>
+<Button onClick={this.back}>Back</Button>
+</Grid>
+<Grid item>
+<Button onClick={this.home}>Home</Button>
+</Grid>
+</Grid>
+</>
+}
+
         return(
             <>
             <h1>Your Themes</h1>
-<section className='overFlowDiv'>
-            <ul>
-            {this.props.themes.map(theme=>
-                <li onClick={()=>this.goToTheme(theme.id)} key={theme.id}>
-                <h3>{theme.theme_name}</h3>
-                <p>{theme.theme_description}</p>
-                </li>
-                )}
-                
-            </ul>
-</section>
-<Grid container
-  direction='row'
-  justify='space-evenly'
-  alignItems='flex-end'
-  >
-  <Grid item>
-<Button onClick={this.back}>Back</Button>
-        </Grid>
-        <Grid item>
-        <Button onClick={this.home}>Home</Button>
-        </Grid>
-        </Grid>
+            {this.updateView}
         </>
         )
     }

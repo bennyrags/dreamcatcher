@@ -4,6 +4,10 @@ import Button from '@material-ui/core/Button';
 //import TextField from '@material-ui/core/TextField'
 //import {HashRouter as Router} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid'
+
+let updateView = ''; 
+
+
 class NewDreamStep4 extends Component {
 
     state = {
@@ -74,19 +78,25 @@ this.getThemes();
 //     }
 }
 
-
-
-
-
-
     render() {
         console.log(this.state)
 
-        return(
-            <>
-            <h1>Pick Themes</h1>
-          <section className='overFlowDiv'>
+if (this.props.themes.length === 0) {
+    this.updateView = 
+    <section className='overFlowDiv'>
+        <p>
+            Looks like you don't have any themes yet for your dreams. Add a theme to get started.
+        </p>
+        <Button onClick={this.goToAddTheme}>Add Theme</Button>
+
+               </section>
+}
+else {
+    this.updateView = 
+    <>
+    <section className='overFlowDiv'>
           <form>
+          
            <ul>
             {this.props.themes.map(theme=> 
                <li key={theme.id}>
@@ -105,13 +115,26 @@ this.getThemes();
   alignItems='flex-end'
   >
   <Grid item>
+  
         <Button onClick={this.lastStep}>Back</Button>
         </Grid>
         <Grid item>
         <Button onClick={this.nextStep}>Next</Button>
         </Grid>
         </Grid>
-       
+</>
+    
+}
+
+
+console.log(`this is updateView,`, this.updateView);
+
+
+        return(
+            <>
+            <h1>Pick Themes</h1>
+            {this.updateView}
+                 
         </>
         )
     }

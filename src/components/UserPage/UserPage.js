@@ -23,7 +23,7 @@ class UserPage extends Component {
     }
   }
 
-
+//time of day conditional to set state and determine what greeting user gets
   handleTimeOfDay = () => {
     let MomentTime = moment().format('HH:mm');
     let SplitTime = MomentTime.split(':');
@@ -68,21 +68,21 @@ class UserPage extends Component {
     })
       .then(response => {
         console.log(`this is response from axios req on userPage`, response.data);
-          date = response.data[0].date;
-          let momentDate = moment(date).format('YYYY-MM-DD');
-          console.log(`this is momentDate in response`, momentDate)
-          this.setState({
-            helloConditionals: {
-              ...this.state.helloConditionals,
-              lastDream: momentDate,
-              todaysDate: moment().format('YYYY-MM-DD'),
-              noDreams:false,
-            }
+        date = response.data[0].date;
+        let momentDate = moment(date).format('YYYY-MM-DD');
+        console.log(`this is momentDate in response`, momentDate)
+        this.setState({
+          helloConditionals: {
+            ...this.state.helloConditionals,
+            lastDream: momentDate,
+            todaysDate: moment().format('YYYY-MM-DD'),
+            noDreams: false,
+          }
 
-          })
+        })
       })
       .catch(error => {
-        //alert(`There was an issue getting the most recent dreams. Please try again later`);
+//possibly not the best way to do this, but noDreams set if the axios request gets a catch
         this.setState({
           helloConditionals: {
             ...this.state.helloConditionals,
@@ -90,7 +90,6 @@ class UserPage extends Component {
           }
         })
         console.log(`ERROR getting stuff from DB FOR USER PAGE, here is error:`, error)
-        console.log(`This is state in error,`, this.state)
 
       })
   }
@@ -115,6 +114,7 @@ class UserPage extends Component {
 
   render() {
 
+//start of conditional render. the noDreams state is set to true by catch clause in the axios get Request
     if (this.state.helloConditionals.noDreams === true) {
       this.userContent =
         <section className='containerInner newDreamButtons'>
