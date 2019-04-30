@@ -15,6 +15,12 @@ overrides: {
             margin: '.5em 0'
         },
    
+    },
+    MuiOutlinedInput: {
+        root: {
+           // color:'white',
+            borderColor:'white'
+        }
     }
 }
 });

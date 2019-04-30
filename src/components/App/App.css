@@ -44,7 +44,7 @@ text-shadow:1px 1px 3px rgba(1,1,1,.3);
 margin: .5em 0 0;
 }
 
-h1,h2,h3,h4,h5,h6,p,li,td,th,textarea,.whiteOverride {
+h1,h2,h3,h4,h5,h6,p,li,td,th,textarea,label, input, .whiteOverride {
     color:white !important;
 }
 
@@ -54,10 +54,17 @@ h4 {
 
 
 
-h3,h4,h5,h6,p,li,td,th,textarea {
-    font-family: 'Raleway', sans-serif;
+h3,h4,h5,h6,p,li,td,th,textarea, input, label {
+    font-family: 'Raleway', sans-serif !important;
 }
 
+p,li,td,th,textarea, input, label {
+    font-size:.8em !important
+}
+
+.loginFieldContainer {
+    margin-bottom:10px;
+}
 
 .container h1, h2 {
     font-weight: 100;

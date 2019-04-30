@@ -48,7 +48,8 @@ class LoginPage extends Component {
           <TextField
           label='Username'
           value={this.state.username}
-          onChange={this.handleInputChangeFor('username')}    variant='filled' 
+          onChange={this.handleInputChangeFor('username')}    
+          variant='outlined' 
           className='tempTextFieldClass'
           />
           </div>
@@ -59,7 +60,7 @@ class LoginPage extends Component {
           label='Password'
           value={this.state.password}
           onChange={this.handleInputChangeFor('password')}
-          variant='filled' 
+          variant='outlined' 
           className='tempTextFieldClass'
           />
           </div>
