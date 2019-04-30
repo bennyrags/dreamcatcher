@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 // import TableHead from '@material-ui/core/TableHead';
 // import TableRow from '@material-ui/core/TableRow';
 // import { Tab } from '@material-ui/core';
-import './ThemeList.css'
 import '../App/App.css'
 import Grid from '@material-ui/core/Grid'
 

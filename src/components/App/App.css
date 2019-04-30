@@ -50,7 +50,19 @@ body::before{
 
 .containerMiddle > ul {
     width:100%;
+    list-style-type: none;
+    text-align:left;
+    font-size: 12px;
+    padding: 10px;
+    color:white;
 }
+
+.containerMiddle > ul > li {
+    margin-top:10px;
+    border:1px solid white;
+    padding: 2px 2px;
+}
+
 
 .containerBottom {
 align-self:flex-end;
