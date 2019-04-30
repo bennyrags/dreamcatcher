@@ -91,7 +91,7 @@ class RegisterPage extends Component {
           <div>
           <TextField
           label='Password'
-          //type="text"
+          type="password"
           name="password"
           value={this.state.password}
           onChange={this.handleInputChangeFor('password')}
