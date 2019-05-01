@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField'
 //import {HashRouter as Router} from 'react-router-dom';
 
 class NewDreamStep1 extends Component {
@@ -36,20 +35,26 @@ nextStep = () => {
       
         return(
             <>
+            <section className='containerHeader'>
             <h1>New Dream</h1>
-            <TextField
-            id='filled-multiline-static'
-          label="Enter New Dream"
-          multiline
+            </section>
+            <section className='overFlowDiv containerMiddle'>
+
+            <label>Enter Dream Description Below</label>
+            <textarea
+            className='textField'
           rows='5'
-          rowsMax="10"
-          variant='outlined'
         onChange={this.handleTextChange}
           margin="normal"
           value={this.state.newDream.description}
           
-        />
+        ></textarea>
+        </section>
+        <section className='containerBottom'>
+
         <Button onClick={this.nextStep}>Next</Button>
+        </section>
+
         </>
         )
     }

@@ -52,8 +52,8 @@ if (this.props.themes.length === 0) {
         You don't have any themes currently. Add one by clicking on the button below.
     </p>
             <Button onClick={this.goToAddTheme}>Add Theme</Button>
-            </section>
-</>
+    </section>
+    </>
 }
 else {
     this.updateView = 

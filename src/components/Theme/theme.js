@@ -80,12 +80,17 @@ class Theme extends Component {
         console.log(`this is state as theme is being edited...`, this.state)
         return (
             <>
-                <h2>
+                <section className='containerHeader'>
+
+                <h1>
                     Theme
- </h2>
+ </h1>
+
+</section>
+
 
                 {this.props.theme.map(i =>
-                    <section key={i.id} className='dreamContainer'>
+                    <section key={i.id} className='dreamContainer '>
                         <h3>{i.theme_name}</h3>
                         <h3>Created Date: {moment(i.theme_created_date).format('L')}</h3>
 
@@ -102,14 +107,14 @@ class Theme extends Component {
                                 <Button onClick={this.saveTheme}>Save Theme</Button>
                             </section>
                             :
-                            <section>
+                            <>
                                 <p> {i.theme_description}</p>
                                 <Button onClick={() => this.editTheme(i.theme_description)}>Edit Theme Description</Button>
+                                <section className='containerBottom'>
                                 <Grid container
                                     direction='row'
                                     justify='space-evenly'
-                                    alignItems='flex-end'
-                                >
+                                    alignItems='flex-end'>
                                     <Grid item>
                                         <Button onClick={() => this.deleteTheme(i.id)}>Delete</Button>
                                     </Grid>
@@ -118,13 +123,14 @@ class Theme extends Component {
                                     </Grid>
                                 </Grid>
                             </section>
+                        </>
                         }
 
                     </section>
                 )
 
                 }
-
+                
             </>
         )
     }
