@@ -16,8 +16,6 @@ class ThemeAddNew extends Component {
  }
 
  updateNewTheme = event => {
-console.log(`event target name:`, event.target.name);
-console.log(`event target value:`, event.target.value);
 
   this.setState({
     newTheme: {
@@ -39,16 +37,24 @@ if (this.state.newTheme.theme_name.length === 0 || this.state.newTheme.theme_des
         //need to redirect to the step 4 with this theme chosen
         this.props.dispatch({type:'ADD_NEW_THEME', payload: this.state.newTheme})
         //i use go back b/c i can get to this page from different places. i want it to go back to wherever it comes from, not a particular page.
-        this.props.history.goBack();
+        this.goBack();
     }//end saveTheme
 
+
+goBack = () => {
+this.props.history.goBack();
+}
+
     render() {
-      console.log(`this is state in render`, this.state);
       
         return(
             <>
+            <section className='containerHeader'>
             <h1>Add New Theme</h1>
-          <label>Theme Name</label>
+            </section>
+            <section className='containerMiddle'>
+
+            <label>Theme Name</label>
             <input
           label="Theme Title"
           className='input'
@@ -67,7 +73,14 @@ if (this.state.newTheme.theme_name.length === 0 || this.state.newTheme.theme_des
           onChange={this.updateNewTheme}
           ></textarea>
         <Button onClick={this.addNewTheme}>Save Theme</Button>
+       </section>
+       <section className='containerBottom'>
+       <Button onClick={this.goBack}>
+       Back
+       </Button>
+       </section>
         </>
+
         )
     }
 
