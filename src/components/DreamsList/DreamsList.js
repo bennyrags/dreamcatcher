@@ -44,7 +44,8 @@ class DreamList extends Component {
                     <h1>Your Dreams</h1>
                 </div>
 
-                <section className="overFlowDiv containerMiddle">
+                <section className="containerMiddle">
+                <div class='overFlowDiv'>
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -81,6 +82,7 @@ class DreamList extends Component {
                             )}
                         </TableBody>
                     </Table>
+                    </div>
                 </section>
                 <section className='containerBottom'>
                     <Grid container

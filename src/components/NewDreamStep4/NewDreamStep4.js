@@ -5,139 +5,142 @@ import Button from '@material-ui/core/Button';
 //import {HashRouter as Router} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid'
 
-let updateView = ''; 
+//let updateView = '';
 
 
 class NewDreamStep4 extends Component {
 
     state = {
         addThemes: {
-        themeIDs: []
+            themeIDs: []
         }
     }
 
-addThemes = (event) => {
-//BUG - UNSELECTING BOX
-//need to add an if statement to make sure the click is not UNSELECTING the checkbox. 
-// if (event.target.checked !==true) {
-//     console.log(`this eventTarget has been unchecked`);
-//     let themeIds = this.props.themesSelected
-//     //do loop to find index of number in ThemeIDs array that matches unchecked value, use that index to slice out number
-//     for (let i=0; i < themeIds.length; i++ ) {
-//         if (event.target.value == themeIds[i]) {
-//             this.setState({
-//             themeIds: themeIds.slice(i, 0)
-//             })
-            
-//             console.log(`themeIds afte slice`, themeIds);
-//         }
-//     }
-// }
+    addThemes = (event) => {
+        //BUG - UNSELECTING BOX
+        //need to add an if statement to make sure the click is not UNSELECTING the checkbox. 
+        // if (event.target.checked !==true) {
+        //     console.log(`this eventTarget has been unchecked`);
+        //     let themeIds = this.props.themesSelected
+        //     //do loop to find index of number in ThemeIDs array that matches unchecked value, use that index to slice out number
+        //     for (let i=0; i < themeIds.length; i++ ) {
+        //         if (event.target.value == themeIds[i]) {
+        //             this.setState({
+        //             themeIds: themeIds.slice(i, 0)
+        //             })
+
+        //             console.log(`themeIds afte slice`, themeIds);
+        //         }
+        //     }
+        // }
 
 
-    this.setState({
-        addThemes: {
-            themeIDs: [...this.state.addThemes.themeIDs, Number(event.target.value)]
-        }
-      
-    })
+        this.setState({
+            addThemes: {
+                themeIDs: [...this.state.addThemes.themeIDs, Number(event.target.value)]
+            }
 
-}
+        })
 
-goToAddTheme = () => {
-    this.props.history.push('/theme-new')
-}
+    }
 
-nextStep = () => {
-    this.props.dispatch({type:'ADD_THEMES', payload: this.state.addThemes.themeIDs})
-    console.log('in nextStep');
-   this.props.history.push('/submitDream')
-}
+    goToAddTheme = () => {
+        this.props.history.push('/theme-new')
+    }
 
-lastStep = () => {
-    this.props.history.push('/step3')
-}
+    nextStep = () => {
 
-getThemes = () => {
-    this.props.dispatch({type:'FETCH_THEMES', payload:this.props.user.id})
+        
+        this.props.dispatch({ type: 'ADD_THEMES', payload: this.state.addThemes.themeIDs })
+        console.log('in nextStep');
+        this.props.history.push('/submitDream')
+    }
 
-}
+    lastStep = () => {
+        this.props.history.push('/step3')
+    }
 
-componentDidMount() {
-this.getThemes();
+    getThemes = () => {
+        this.props.dispatch({ type: 'FETCH_THEMES', payload: this.props.user.id })
 
-// //to make sure checked themes remain checked until submit
-//     if (this.state.addThemes.themeIDs !==[])  {
-//         let input = document.getElementsByTagName('input');
-//                for (let i=0; i < input.length; i++) {
-//             if (this.props.themesSelected.includes(Number(input[i].value))) {
-//                 input[i].checked = true;
+    }
 
-//             }
-//         }
-//     }
-}
+    componentDidMount() {
+        this.getThemes();
+
+        // //to make sure checked themes remain checked until submit
+        //     if (this.state.addThemes.themeIDs !==[])  {
+        //         let input = document.getElementsByTagName('input');
+        //                for (let i=0; i < input.length; i++) {
+        //             if (this.props.themesSelected.includes(Number(input[i].value))) {
+        //                 input[i].checked = true;
+
+        //             }
+        //         }
+        //     }
+    }
 
     render() {
         console.log(this.state)
 
-if (this.props.themes.length === 0) {
-    this.updateView = 
-    <section className='overFlowDiv'>
-        <p>
-            Looks like you don't have any themes yet for your dreams. Add a theme to get started.
+        if (this.props.themes.length === 0) {
+            this.updateView =
+                <section className='overFlowDiv'>
+                    <p>
+                        Looks like you don't have any themes yet for your dreams. Add a theme to get started.
         </p>
-        <Button onClick={this.goToAddTheme}>Add Theme</Button>
+                    <Button onClick={this.goToAddTheme}>Add Theme</Button>
 
-               </section>
-}
-else {
-    this.updateView = 
-    <>
-    <section className='overFlowDiv containerMiddle'>
-          <form>
-           <ul>
-            {this.props.themes.map(theme=> 
-               <li key={theme.id}>
-               <input onChange={this.addThemes} type='checkbox' value={theme.id}/>{theme.theme_name}
-               </li>
-            
-                )}
-               </ul>
+                </section>
+        }
+        else {
+            this.updateView =
+                <>
+                    <section className='containerMiddle'>
+                        <form className='overFlowDiv'>
+                            <ul>
+                                {this.props.themes.map(theme =>
+                                    <li key={theme.id}>
+                                        <input onChange={this.addThemes} type='checkbox' value={theme.id} />{theme.theme_name}
+                                    </li>
 
-               </form>
-               <Button onClick={this.goToAddTheme}>Add Theme</Button>
-               </section>
-               <section className='containerBottom'></section>
-               <Grid container
-  direction='row'
-  justify='space-evenly'
-  alignItems='flex-end'
-  >
-  <Grid item>
-  
-        <Button onClick={this.lastStep}>Back</Button>
-        </Grid>
-        <Grid item>
-        <Button onClick={this.nextStep}>Next</Button>
-        </Grid>
-        </Grid>
-</>
-    
-}
+                                )}
+                            </ul>
 
+                        </form>
+                        <Button onClick={this.goToAddTheme}>Add Theme</Button>
+                    </section>
+                    <section className='containerBottom'>
+                        <Grid container
+                            direction='row'
+                            justify='space-evenly'
+                            alignItems='flex-end'
+                        >
+                            <Grid item>
 
-console.log(`this is updateView,`, this.updateView);
+                                <Button onClick={this.lastStep}>Back</Button>
+                            </Grid>
+                            <Grid item>
+                                <Button onClick={this.nextStep}>Next</Button>
+                            </Grid>
+                        </Grid>
+                    </section>
+                </>
+
+        }
 
 
-        return(
+        console.log(`this is updateView,`, this.updateView);
+
+
+        return (
             <>
-            <section className='containerHeader'>
-            <h1>Pick Themes</h1>
-            </section>
-            {this.updateView}
-            
-        </>
+                <section className='containerHeader'>
+                    <h1>Pick Themes</h1>
+                </section>
+                {this.updateView}
+
+            </>
         )
     }
 
@@ -147,9 +150,8 @@ console.log(`this is updateView,`, this.updateView);
 const mapStateToProps = state => ({
     user: state.user,
     themes: state.themes,
-   // themesSelected: state.dreamAdd.themes
+    // themesSelected: state.dreamAdd.themes
 
-  });
-  
-  export default connect(mapStateToProps)(NewDreamStep4);
-  
+});
+
+export default connect(mapStateToProps)(NewDreamStep4);

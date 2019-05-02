@@ -90,7 +90,7 @@ class Theme extends Component {
                     <div key={i.id} className='dreamContainer'>
                         <section className='containerHeader'>
                             <h1>Theme: {i.theme_name}</h1>
-                            <h3>Created Date: {moment(i.theme_created_date).format('L')}</h3>
+                            <h4>Created Date: {moment(i.theme_created_date).format('L')}</h4>
                         </section>
 
                         {this.state.editedTheme.editing === true
@@ -111,7 +111,10 @@ class Theme extends Component {
                                     <p> {i.theme_description}</p>
                                     <Button onClick={() => this.editTheme(i.theme_description)}>Edit Theme Description</Button>
                                 </section>
-                                <section className='containerBottom'>
+                              
+                            </>        
+                        }
+                          <section className='containerBottom'>
                                     <Grid container
                                         direction='row'
                                         justify='space-evenly'
@@ -124,8 +127,6 @@ class Theme extends Component {
                                         </Grid>
                                     </Grid>
                                 </section>
-                            </>        
-                        }
                         </div>
                     
                 )

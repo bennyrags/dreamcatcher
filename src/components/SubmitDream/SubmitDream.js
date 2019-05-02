@@ -23,11 +23,15 @@ lastStep = () => {
     render() {
         return(
             <>
+            <section className='containerHeader'>
             <h1>Submit Your Dream</h1>
-           <p>
+            </section>
+            <section className='containerMiddle'>
+           <h3>
                Your dream is ready to be saved. Do you want to save it? 
-           </p>
-
+           </h3>
+           </section>
+           <section className='containerBottom'>
            <Grid container
   direction='row'
   justify='space-evenly'
@@ -40,7 +44,7 @@ lastStep = () => {
         <Button onClick={this.saveDream}>Save</Button>
         </Grid>
         </Grid>
-        
+</section>        
         
 
         </>

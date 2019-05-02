@@ -17,10 +17,15 @@ dreamList = () => {
     render() {
         return(
             <>
-            <h1>Thank You For Submitting Your Dream</h1>
+            <div className='containerHeader'>
+                        <h1>Thank You For Submitting Your Dream</h1>
+                        </div>
+            <div className='containerMiddle'>
            <p>
                Your dream has been saved. 
            </p>
+           </div>
+           <div className='containerBottom'>
            <Grid container
   direction='row'
   justify='space-evenly'
@@ -34,7 +39,7 @@ dreamList = () => {
         </Grid>
         </Grid>
         
-
+        </div>
        
         </>
         )

@@ -10,8 +10,7 @@ import Button from '@material-ui/core/Button';
 // import { Tab } from '@material-ui/core';
 import '../App/App.css'
 import Grid from '@material-ui/core/Grid'
-
-let updateView = '';
+//let updateView = '';
 
 class ThemeList extends Component {
     
@@ -58,8 +57,8 @@ if (this.props.themes.length === 0) {
 else {
     this.updateView = 
     <>
-    <section className='overFlowDiv containerMiddle'>
-    <ul>
+    <section className='containerMiddle'>
+    <ul className='overFlowDiv' >
     {this.props.themes.map(theme=>
         <li onClick={()=>this.goToTheme(theme.id)} key={theme.id}>
         <h3>{theme.theme_name}</h3>

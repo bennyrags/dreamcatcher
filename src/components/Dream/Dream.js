@@ -84,14 +84,14 @@ class Dream extends Component {
     render() {
         console.log('this is this.props.dream,', this.props.dream)
         return (
-            <>
-                
-
+            <> 
                 {this.props.dream.map(i =>
-                    <section key={i.id} className='dreamContainer'>
-                <h2>
+                    <div key={i.id} className='dreamContainer'>
+                                            <section className='containerHeader'>
+
+                <h1>
                     Dream, {moment(i.date).format('L')}
-            </h2>
+            </h1>
 
             <Grid container
             direction='row'
@@ -107,41 +107,50 @@ class Dream extends Component {
                        </Grid>
                         </Grid>
                         <h4>Themes: {i.string_agg}</h4>
+                        </section> {/* end of header section */}
                 {this.state.editedDream.editing === true ? 
-                     <section>
-                     <TextField
-                        className='whiteOverride'
+                     <section className='containerMiddle'>
+                     <textarea
+                        className='textField'
                          value={this.state.editedDream.description}
                          onChange={this.handleTextUpdate}
-                         multiline
+                         
                          rows='4'
-                         variant='outlined'
-                     /> <br />
+                     > </textarea>
                      <Button onClick={this.saveDream}>Save Dream</Button>
                  </section>
                     :
-                        <>
+                    <>
+                    <section className='containerMiddle'>
+                    
                         <p>
                             {i.description}
                         </p>
                    <Button onClick={() => this.editDream(i.description)}>Edit Description</Button>
+                   </section>
+                   
+                   </>
+                }
+                <section className='containerBottom'>
                    <Grid container
                     direction='row'
                     justify='space-evenly'
                     alignItems='flex-end'
                    
                    >
+                
                     <Grid item>
+                
+                    
                    <Button onClick={() => this.deleteDream(i.id)}>Delete</Button>
                    </Grid>
                    <Grid item>
                    <Button onClick={this.goToAllDreams}>All Dreams</Button>
                    </Grid>
                    </Grid>
-                   </>
-                }
+                   </section>
                      
-                    </section>
+                    </div>
                 )
 
                 }

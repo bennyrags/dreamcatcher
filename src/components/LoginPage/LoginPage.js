@@ -34,6 +34,11 @@ class LoginPage extends Component {
   render() {
     return (
       <>
+      <div className='containerHeader'>
+      <h1>Login</h1>
+      </div>
+      
+      <section className='containerMiddle'>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -43,26 +48,25 @@ class LoginPage extends Component {
           </h2>
         )}
         <form onSubmit={this.login}>
-          <h2>Login</h2>
+          
           <div className='loginFieldContainer'>
-          <TextField
+          <input
+          type='username'
           label='Username'
           value={this.state.username}
           onChange={this.handleInputChangeFor('username')}    
-          variant='outlined' 
+          
           className='tempTextFieldClass'
           />
           </div>
 
           <div className='loginFieldContainer'>
-          <TextField
+          <input
           type='password'
           label='Password'
           value={this.state.password}
           onChange={this.handleInputChangeFor('password')}
-          variant='outlined' 
-          className='tempTextFieldClass'
-          />
+            />
           </div>
 
           <div>
@@ -75,7 +79,14 @@ class LoginPage extends Component {
             </Button>
           </div>
         </form>
+        </section>
+
+
+        <section className='containerBottom'>
         <center>
+
+
+
           <Button
             type="button"
             className="link-button"
@@ -84,6 +95,7 @@ class LoginPage extends Component {
             Register
           </Button>
         </center>
+        </section>
       </>
     );
   }

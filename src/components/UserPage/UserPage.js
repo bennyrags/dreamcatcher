@@ -106,9 +106,16 @@ class UserPage extends Component {
   }
 
 
+  addUserPageClass = () => {
+    let container = document.getElementsByClassName('container')[0];
+  container.classList.add('containerUserPage')
+  }
+
+
   componentDidMount() {
     this.handleDreamsEntered();
     this.handleTimeOfDay();
+    this.addUserPageClass();
   }
 
 
@@ -117,7 +124,7 @@ class UserPage extends Component {
 //start of conditional render. the noDreams state is set to true by catch clause in the axios get Request
     if (this.state.helloConditionals.noDreams === true) {
       this.userContent =
-        <section className='containerInner newDreamButtons'>
+        <section className='containerMiddle newDreamButtons'>
           <p>
             Looks like you don't have any dreams.
 </p>
@@ -143,7 +150,7 @@ class UserPage extends Component {
 
     else if (this.state.helloConditionals.noDreams === false && this.state.helloConditionals.lastDream === this.state.helloConditionals.todaysDate) {
       this.userContent =
-        <section className='containerInner newDreamButtons'>
+        <>
           <p>
             Looks like you've already entered a dream for today.
 </p>
@@ -163,12 +170,12 @@ class UserPage extends Component {
 </Button>
             </Grid>
           </Grid>
-        </section>
+        </>
     }
 
     else {
       this.userContent =
-        <section className='containerInner, newDreamButtons'>
+        <section className='newDreamButtons'>
           <Grid container
             direction='row'
             justify='space-evenly'
@@ -176,7 +183,7 @@ class UserPage extends Component {
           >
             <Grid item>
               <Button onClick={this.newDream} className='mainButton'>
-                Add new Dream
+                New Dream
   </Button>
             </Grid>
             <Grid item>
@@ -190,7 +197,7 @@ class UserPage extends Component {
 
     return (
 
-      <div>
+      <div className='containerMiddle'>
         <h1 id="welcome">
           Good {this.state.helloConditionals.timeOfDay},{this.props.user.first_name}
         </h1>

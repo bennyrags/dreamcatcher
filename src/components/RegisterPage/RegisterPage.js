@@ -41,6 +41,10 @@ class RegisterPage extends Component {
   render() {
     return (
       <div>
+<section className='containerHeader'>
+      <h1>Register User</h1>
+      </section>
+      <section>
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -50,7 +54,7 @@ class RegisterPage extends Component {
           </h2>
         )}
         <form onSubmit={this.registerUser}>
-          <h1>Register User</h1>
+          
           <div>
           <div className='loginFieldContainer'>
           <TextField
@@ -105,15 +109,17 @@ class RegisterPage extends Component {
             > Register </Button>
           </div>
         </form>
+        </section>
+        <section className='containerBottom'>
         <center>
-          <button
+          <Button
             type="button"
-            className="link-button"
             onClick={() => {this.props.dispatch({type: 'SET_TO_LOGIN_MODE'})}}
           >
             Login
-          </button>
+          </Button>
         </center>
+        </section>
       </div>
     );
   }
