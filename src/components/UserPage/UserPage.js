@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+
 import Button from '@material-ui/core/Button'
 import moment from 'moment';
 import axios from 'axios';
-import ThemeAddNew from '../ThemeAddNew/ThemeAddNew';
+
 import Grid from '@material-ui/core/Grid';
 //import Fade from '@material-ui/core/Fade'
 
-let userContent = '';
+//let userContent = '';
 
 
 class UserPage extends Component {

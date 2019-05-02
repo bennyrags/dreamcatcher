@@ -162,6 +162,21 @@ h4 {
     margin:0 0 10px;
 }
 
+.radioButtons h4 {
+    display:inline;
+}
+
+.radioButtons h4:first-of-type {
+    margin-right:5px;
+}
+
+.radioButtons h4:last-of-type {
+    margin-left:5px;
+}
+
+.radioButtons input {
+    width: 25px;
+}
 
 
 h3,h4,h5,h6,p,li,td,th,textarea, input, label {

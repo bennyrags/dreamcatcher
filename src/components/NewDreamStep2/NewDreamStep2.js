@@ -54,14 +54,14 @@ componentDidMount() {
 
 
 <section className='containerMiddle'>
-<form>
-  Cold 
+<form className='radioButtons'>
+  <h4>Cold</h4>
   <input onChange={this.handleTempChange} type="radio" name="temp" value="1" /> 
   <input onChange={this.handleTempChange} type="radio" name="temp" value="2" /> 
   <input onChange={this.handleTempChange} type="radio" name="temp" value="3" /> 
   <input onChange={this.handleTempChange} type="radio" name="temp" value="4" /> 
   <input onChange={this.handleTempChange} type="radio" name="temp" value="5" /> 
-  Warm
+  <h4>Warm</h4>
   </form>
 </section>
 <section className='containerBottom'>

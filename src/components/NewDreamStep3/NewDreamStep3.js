@@ -51,14 +51,14 @@ componentDidMount() {
             </section>
 
 <section className='containerMiddle'>
-<form>
-  Calm 
+<form className='radioButtons'>
+  <h4>Calm</h4>
   <input onChange={this.handleMoodChange} type="radio" name="temp" value="1" /> 
   <input onChange={this.handleMoodChange} type="radio" name="temp" value="2" /> 
   <input onChange={this.handleMoodChange} type="radio" name="temp" value="3" /> 
   <input onChange={this.handleMoodChange} type="radio" name="temp" value="4" /> 
   <input onChange={this.handleMoodChange} type="radio" name="temp" value="5" /> 
-  Agitated
+  <h4>Agitated</h4>
   </form>
   </section>
   <section className='containerBottom'>
