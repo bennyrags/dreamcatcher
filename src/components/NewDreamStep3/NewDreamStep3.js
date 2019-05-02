@@ -44,8 +44,13 @@ componentDidMount() {
     render() {
         return(
             <>
+            <section className='containerHeader'>
+
             <h1>How Are You Feeling?</h1>
             <h2>(mood)</h2>
+            </section>
+
+<section className='containerMiddle'>
 <form>
   Calm 
   <input onChange={this.handleMoodChange} type="radio" name="temp" value="1" /> 
@@ -55,6 +60,8 @@ componentDidMount() {
   <input onChange={this.handleMoodChange} type="radio" name="temp" value="5" /> 
   Agitated
   </form>
+  </section>
+  <section className='containerBottom'>
   <Grid container
   direction='row'
   justify='space-evenly'
@@ -67,7 +74,7 @@ componentDidMount() {
         <Button onClick={this.nextStep}>Next</Button>
         </Grid>
         </Grid>
-
+        </section>
         </>
         )
     }

@@ -94,9 +94,8 @@ if (this.props.themes.length === 0) {
 else {
     this.updateView = 
     <>
-    <section className='overFlowDiv'>
+    <section className='overFlowDiv containerMiddle'>
           <form>
-          
            <ul>
             {this.props.themes.map(theme=> 
                <li key={theme.id}>
@@ -107,8 +106,9 @@ else {
                </ul>
 
                </form>
-               </section>
                <Button onClick={this.goToAddTheme}>Add Theme</Button>
+               </section>
+               <section className='containerBottom'></section>
                <Grid container
   direction='row'
   justify='space-evenly'
@@ -132,9 +132,11 @@ console.log(`this is updateView,`, this.updateView);
 
         return(
             <>
+            <section className='containerHeader'>
             <h1>Pick Themes</h1>
+            </section>
             {this.updateView}
-                 
+            
         </>
         )
     }
