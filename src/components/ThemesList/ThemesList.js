@@ -8,11 +8,9 @@ import Button from '@material-ui/core/Button';
 // import TableHead from '@material-ui/core/TableHead';
 // import TableRow from '@material-ui/core/TableRow';
 // import { Tab } from '@material-ui/core';
-import './ThemeList.css'
 import '../App/App.css'
 import Grid from '@material-ui/core/Grid'
-
-let updateView = '';
+//let updateView = '';
 
 class ThemeList extends Component {
     
@@ -48,17 +46,19 @@ componentDidMount() {
 if (this.props.themes.length === 0) {
     this.updateView = 
     <>
+    <section className='containerMiddle'>
     <p>
         You don't have any themes currently. Add one by clicking on the button below.
     </p>
             <Button onClick={this.goToAddTheme}>Add Theme</Button>
-</>
+    </section>
+    </>
 }
 else {
     this.updateView = 
     <>
-    <section className='overFlowDiv'>
-    <ul>
+    <section className='containerMiddle'>
+    <ul className='overFlowDiv' >
     {this.props.themes.map(theme=>
         <li onClick={()=>this.goToTheme(theme.id)} key={theme.id}>
         <h3>{theme.theme_name}</h3>
@@ -68,6 +68,7 @@ else {
         
     </ul>
 </section>
+<section className='containerBottom'>
 <Grid container
 direction='row'
 justify='space-evenly'
@@ -80,12 +81,15 @@ alignItems='flex-end'
 <Button onClick={this.home}>Home</Button>
 </Grid>
 </Grid>
+</section>
 </>
 }
 
         return(
             <>
+            <div className='containerHeader'>
             <h1>Your Themes</h1>
+            </div>
             {this.updateView}
         </>
         )

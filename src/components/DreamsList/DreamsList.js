@@ -23,74 +23,81 @@ class DreamList extends Component {
     }
 
 
-componentDidMount() {
-    this.props.dispatch({type:'FETCH_DREAMS', payload: this.props.user.id})
+    componentDidMount() {
+        this.props.dispatch({ type: 'FETCH_DREAMS', payload: this.props.user.id })
 
-}
+    }
 
 
-back = () => {
-    this.props.history.goBack();
-}
+    back = () => {
+        this.props.history.goBack();
+    }
 
-home = () => {
-    this.props.history.push('/')
-}
+    home = () => {
+        this.props.history.push('/')
+    }
 
     render() {
-        return(
+        return (
             <>
-            <h1>Your Dreams</h1>
-            <section className="overFlowDiv">
-<Table>
-    <TableHead>
-        <TableRow>
-            <TableCell>
-                Date
-            </TableCell>
-            <TableCell>
-                Description
-            </TableCell>
-        </TableRow>
-    </TableHead>
-    <TableBody>
-       {this.props.dreams.map(dream => {
-        //only want the first few words to be displayed
-        let dreamSentance = dream.description.split(' ');
-        let firstFewWords = '';
-        if (dreamSentance.length > 3) {
-            for (let i=0; i < 4; i++) {
-                firstFewWords += ' ' + dreamSentance[i];
-            }
-        }
-        else {
-            for (let i=0; i < dreamSentance.length; i++) {
-                firstFewWords += ' ' + dreamSentance[i];
-            }
-           
-        }
+                <div className='containerHeader'>
+                    <h1>Your Dreams</h1>
+                </div>
 
-        return <TableRow onClick={()=>this.handleClick(dream.id)} key={dream.id}>
-          <TableCell>{moment(dream.date).format('L')}</TableCell>  
-          <TableCell>{firstFewWords}...</TableCell>  
-        </TableRow>
-        }
-        )}
-    </TableBody>
-</Table>
-</section>
-<Grid container
-  direction='row'
-  justify='space-evenly'
-  alignItems='flex-end'
-  >
-  <Grid item>
-        <Button onClick={this.back}>Back</Button>
-        </Grid>
-        <Grid item>
-        <Button onClick={this.home}>Home</Button>
-        </Grid>
-        </Grid>
+                <section className="containerMiddle">
+                <div class='overFlowDiv'>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    Date
+            </TableCell>
+                                <TableCell>
+                                    Description
+            </TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {this.props.dreams.map(dream => {
+                                //only want the first few words to be displayed
+                                let dreamSentance = dream.description.split(' ');
+                                let firstFewWords = '';
+                                if (dreamSentance.length > 3) {
+                                    for (let i = 0; i < 4; i++) {
+                                        firstFewWords += ' ' + dreamSentance[i];
+                                    }
+                                }
+                                else {
+                                    for (let i = 0; i < dreamSentance.length; i++) {
+                                        firstFewWords += ' ' + dreamSentance[i];
+                                    }
+
+                                }
+
+                                return <TableRow onClick={() => this.handleClick(dream.id)} key={dream.id}>
+                                    <TableCell>{moment(dream.date).format('L')}</TableCell>
+                                    <TableCell>{firstFewWords}...</TableCell>
+                                </TableRow>
+                            }
+                            )}
+                        </TableBody>
+                    </Table>
+                    </div>
+                </section>
+                <section className='containerBottom'>
+                    <Grid container
+                        direction='row'
+                        justify='space-evenly'
+                        alignItems='flex-end'
+                    >
+                        <Grid item>
+                            <Button onClick={this.back}>Back</Button>
+                        </Grid>
+                        <Grid item>
+                            <Button onClick={this.home}>Home</Button>
+                        </Grid>
+                    </Grid>
+                </section>
             </>
         )
     }
@@ -101,7 +108,6 @@ home = () => {
 const mapStateToProps = state => ({
     user: state.user,
     dreams: state.dreams
-  });
-  
-  export default connect(mapStateToProps)(DreamList);
-  
+});
+
+export default connect(mapStateToProps)(DreamList);

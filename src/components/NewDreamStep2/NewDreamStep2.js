@@ -47,8 +47,13 @@ componentDidMount() {
         
         return(
             <>
+            <section className='containerHeader'>
             <h1>How Are You Feeling?</h1>
             <h2>(temperature)</h2>
+            </section>
+
+
+<section className='containerMiddle'>
 <form>
   Cold 
   <input onChange={this.handleTempChange} type="radio" name="temp" value="1" /> 
@@ -58,6 +63,8 @@ componentDidMount() {
   <input onChange={this.handleTempChange} type="radio" name="temp" value="5" /> 
   Warm
   </form>
+</section>
+<section className='containerBottom'>
   <Grid container
   direction='row'
   justify='space-evenly'
@@ -70,6 +77,7 @@ componentDidMount() {
         <Button onClick={this.nextStep}>Next</Button>
         </Grid>
         </Grid>
+        </section>
         </>
         )
     }
