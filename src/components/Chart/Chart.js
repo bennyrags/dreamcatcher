@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import {Line} from 'react-chartjs-2';
 import moment from 'moment';
-
-
+import './Chart.css'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import { connect } from 'react-redux'
 /*
 THIS IS CODE FROM SPIKE! - 4-24-2019
 
@@ -10,49 +12,50 @@ Objective: get dynamic info into chart.js chart.
 This was mostly accomplished. First I created an array of objects similar to one I might expect from a get req to the database. That is represented in the chartInfo const below
 */
 
-const chartInfo = [
-    {
-        date: '11/20/18',
-        mood: 2,
-        temp: 3
-    },
-    {
-        date: '11/23/18',
-        mood: 5,
-        temp: 2
-    },
-    {
-        date: '11/24/18',
-        mood: 1,
-        temp: 3
-    },
-    {
-        date: '11/25/18',
-        mood: 4,
-        temp: 1
-    },
-    {
-        date: '11/26/18',
-        mood: 2,
-        temp: 5
-    },
-    {
-        date: '11/29/18',
-        mood: 3,
-        temp: 4
-    },
-    {
-        date: '12/02/18',
-        mood: 1,
-        temp: 4
-    }
-];
+// const chartInfo = [
+//     {
+//         date: '11/20/18',
+//         mood: 2,
+//         temp: 3
+//     },
+//     {
+//         date: '11/23/18',
+//         mood: 5,
+//         temp: 2
+//     },
+//     {
+//         date: '11/24/18',
+//         mood: 1,
+//         temp: 3
+//     },
+//     {
+//         date: '11/25/18',
+//         mood: 4,
+//         temp: 1
+//     },
+//     {
+//         date: '11/26/18',
+//         mood: 2,
+//         temp: 5
+//     },
+//     {
+//         date: '11/29/18',
+//         mood: 3,
+//         temp: 4
+//     },
+//     {
+//         date: '12/02/18',
+//         mood: 1,
+//         temp: 4
+//     }
+// ];
 
 class Chart extends Component {
 
 //The state is the setup for a chartJs using the example from https://github.com/jerairrest/react-chartjs-2
 
 state = {
+    dreams: [],
     data: {
         labels: [],
     datasets: [
@@ -99,31 +102,26 @@ state = {
     ],
   
 },
-//This doesnt work and I'm not sure why. It seems to follow the examples Ive seen, but the font size / color doesn't change
-options: { 
-    scales: {
-        xAxis: {
-            display:false
-        }
-    
-    }
 
-}
 }//end state
 
 //update the chart by taking in info from an array of objs that is meant to mimic a resp from server
 updateChart = () => {
+    console.log(`this is this.state.dreams`, this.state.dreams);
+    
     let mood = [];
     let temp = [];
     let dates = [];
     //loop through array, and put these three things in separate arrays for chart
-
-    for (let i of chartInfo) {
-        mood.push(i.mood);
-        temp.push(i.temp);
+   // console.log(`this.props.dreams in updateChart`, this.props.dreams);
+    for (let i of this.state.dreams) {
+        
+        mood.push(i.score_mood);
+        temp.push(i.score_temp);
         //use moment.js to make date more readable
         dates.push(moment(i.date).format('ll'));
     }   
+    console.log(`this is mood, temp and dates arrs in the updateChart funct,`)
     //this calls a funct that takes the new arrays as arguments
     this.addStuffToState(mood,temp,dates);
     
@@ -152,27 +150,109 @@ addStuffToState = (mood,temp,dates) => {
 
 }
 
+goHome = () => {
+    this.props.history.push('/')
+}
+
 
 componentDidMount() {
-    this.updateChart();
+    this.props.dispatch({ type: 'FETCH_DREAMS', payload: this.props.user.id })
+   
+    
 }
+
+componentDidUpdate(prevProps) {
+    if(this.props.dreams !== prevProps.dreams) {
+    let mood = [];
+    let temp = [];
+    let dates = [];
+    //loop through array, and put these three things in separate arrays for chart
+    console.log(`this.props.dreams in updateChart`, this.props.dreams);
+    for (let i of this.props.dreams) {
+// console.log(`props dreams in component did  update`, this.props.dreams)
+        mood.push(i.score_mood);
+        temp.push(i.score_temp);
+        //use moment.js to make date more readable
+        dates.push(moment(i.date).format('ll'));
+    }   
+    //console.log(`this is mood, temp and dates arrs in the updateChart funct,`)
+    //this calls a funct that takes the new arrays as arguments
+    this.addStuffToState(mood,temp,dates);
+    }
+}
+
 
 render() {
     console.log('this is state after set state', this.state);
+    console.log(`this is this.props.dreams in render`, this.props.dreams);
 
     return(
-        <div className='chartJs'>
-        <section className='containerHeader'>
-            <h2>Hello from ChartJs! </h2>
+        
+            <>
+            {/* {JSON.stringify(this.state.dreams)} */}
+            <section className='containerHeader'>
+            <h1>Dream Chart</h1>
             </section>
             <section className='containerMiddle'>
-        {/* The chart is below. The issue with this way is that there is little way to change a single canvas element. Whereas in d3, you can change particular parts of the svg */}
-            <Line data={this.state.data}  />
+            <div className='chartDiv'>
+        
+            <Line data={this.state.data}  
+            
+             options= {{
+                title: {
+                    display:true,
+                    text: 'Mood / Temp Chart',
+                    fontColor:'white'
+                },
+                legend: {
+                    display:true,
+                    position:'bottom',
+                    fontColor: 'white'
+                },
+                maintainAspectRatio: false,
+                scales: {
+                    yAxes: [{
+                        fontSize: 3,
+                    fontColor:'white',
+                    ticks: {
+                        min:0,
+                        max:5,
+                        stepSize:1,
+                        fontColor:'#fff'           
+                    }
+                    }],
+                    
+                    xAxes: [{
+                        display:false
+                    }]
+                }  
+            }}
+            />
+            </div>
+
             </section>
-        </div>
+            <section className='containerBottom'>
+            <Grid container
+direction='row'
+justify='space-evenly'
+
+>
+    <Grid item>
+            <Button onClick={this.goHome}>Home</Button>
+
+    </Grid>
+    </Grid>
+            </section>
+        </>
     )
 }
 
 }
 
-export default Chart;
+const mapStateToProps = state => ({
+    user: state.user,
+    dreams: state.dreams
+  });
+  
+
+export default connect(mapStateToProps)(Chart);
