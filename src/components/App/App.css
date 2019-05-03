@@ -267,3 +267,12 @@ li > h3 {
 li > p {
     margin: 5px 0;
 }
+
+/*For presentation*/
+.horrace {
+    width: 30px;
+    height:10px;
+    border: 1px solid transparent;
+    background:transparent;
+    display: block;
+}

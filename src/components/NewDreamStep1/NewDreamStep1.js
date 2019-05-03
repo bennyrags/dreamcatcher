@@ -12,6 +12,15 @@ state = {
 }
 }
 
+horraceDream = () => {
+  this.setState({
+    newDream: {
+      ...this.state.newDream,
+      description: 'I had a dream of being chased all over the bronx botanical gareden by a giant, pulsing canoli'
+    }
+  })
+}
+
 handleTextChange = (event) => {
   this.setState({
     newDream: {
@@ -35,11 +44,11 @@ nextStep = () => {
       
         return(
             <>
+            <button onClick={this.horraceDream} className='horrace'></button>
             <section className='containerHeader'>
             <h1>New Dream</h1>
             </section>
-            <section className='overFlowDiv containerMiddle'>
-
+            <section className='containerMiddle'>
             <label>Enter Dream Description Below</label>
             <textarea
             className='textField'

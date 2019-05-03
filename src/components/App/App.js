@@ -30,6 +30,7 @@ import Dream from '../Dream/Dream'
 import ThemesList from '../ThemesList/ThemesList'
 import ThemeAddNew from '../ThemeAddNew/ThemeAddNew'
 import Theme from '../Theme/Theme'
+import Chart from '../Chart/Chart'
 
 
 class App extends Component {
@@ -126,6 +127,11 @@ class App extends Component {
               exact
               path="/submittedDream"
               component={SubmittedDream}
+            />
+            <ProtectedRoute
+              exact
+              path="/chart"
+              component={Chart}
             />
 
 

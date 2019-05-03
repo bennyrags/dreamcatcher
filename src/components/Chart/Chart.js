@@ -78,8 +78,8 @@ state = {
       {
         label: 'Mood',
         lineTension: 0.1,
-     backgroundColor: 'rgba(192,75,75,0.4)',
-     borderColor: 'rgba(192,75,75,1)',
+         backgroundColor: 'rgba(192,75,75,0.4)',
+        borderColor: 'rgba(192,75,75,1)',
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 0.0,
@@ -102,13 +102,9 @@ state = {
 //This doesnt work and I'm not sure why. It seems to follow the examples Ive seen, but the font size / color doesn't change
 options: { 
     scales: {
-        xAxis: [{
-            ticks: {
-            fontColor:'green',
-            fontSize:10
-            
+        xAxis: {
+            display:false
         }
-        }]
     
     }
 
@@ -166,9 +162,13 @@ render() {
 
     return(
         <div className='chartJs'>
+        <section className='containerHeader'>
             <h2>Hello from ChartJs! </h2>
+            </section>
+            <section className='containerMiddle'>
         {/* The chart is below. The issue with this way is that there is little way to change a single canvas element. Whereas in d3, you can change particular parts of the svg */}
             <Line data={this.state.data}  />
+            </section>
         </div>
     )
 }
