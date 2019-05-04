@@ -8,6 +8,12 @@ body {
     background: url(../../images/clouds-background.jpg)
 }
 
+@media (min-width:1020px) {
+    body {
+        background-size: cover;
+    }
+}
+
 body::before{
     content: '';
     background-color:tomato;
