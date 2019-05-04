@@ -115,7 +115,6 @@ updateChart = () => {
     //loop through array, and put these three things in separate arrays for chart
    // console.log(`this.props.dreams in updateChart`, this.props.dreams);
     for (let i of this.state.dreams) {
-        
         mood.push(i.score_mood);
         temp.push(i.score_temp);
         //use moment.js to make date more readable
@@ -167,7 +166,6 @@ componentDidUpdate(prevProps) {
     let temp = [];
     let dates = [];
     //loop through array, and put these three things in separate arrays for chart
-    console.log(`this.props.dreams in updateChart`, this.props.dreams);
     for (let i of this.props.dreams) {
 // console.log(`props dreams in component did  update`, this.props.dreams)
         mood.push(i.score_mood);
@@ -183,15 +181,12 @@ componentDidUpdate(prevProps) {
 
 
 render() {
-    console.log('this is state after set state', this.state);
-    console.log(`this is this.props.dreams in render`, this.props.dreams);
-
+   
     return(
         
             <>
-            {/* {JSON.stringify(this.state.dreams)} */}
             <section className='containerHeader'>
-            <h1>Dream Chart</h1>
+            <h1>Mood / Temp Chart</h1>
             </section>
             <section className='containerMiddle'>
             <div className='chartDiv'>
@@ -199,18 +194,19 @@ render() {
             <Line data={this.state.data}  
             
              options= {{
-                title: {
-                    display:true,
-                    text: 'Mood / Temp Chart',
-                    fontColor:'white'
-                },
                 legend: {
                     display:true,
                     position:'bottom',
-                    fontColor: 'white'
+                    labels: {
+                        fontColor: 'white'
+                    }
+                    
                 },
                 maintainAspectRatio: false,
                 scales: {
+                    gridLines: {
+                      display:false
+                    },
                     yAxes: [{
                         fontSize: 3,
                     fontColor:'white',
