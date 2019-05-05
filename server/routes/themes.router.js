@@ -23,5 +23,23 @@ router.get('/:id', rejectUnauthenticated, (req, res, next) => {
     );
 })
 
+router.get('/count/:id', rejectUnauthenticated, (req,res,next) => {
+  const id = req.params.id;
+  const queryText = `SELECT themes.id, themes.theme_name, count(dreams.id) FROM themes
+  JOIN themes_dreams ON themes.id = themes_dreams.theme_id
+  JOIN dreams ON dreams.id = themes_dreams.dream_id
+  JOIN "user" ON "user".id = themes.user_id WHERE "user".id = $1
+  Group by themes.id;`;
+pool.query(queryText, [id])
+.then(response=>{
+res.send(response.rows);
+})
+.catch(error=>{
+  res.sendStatus(500);
+  console.log(`this is the error when trying to return count of themes used in dreams by user`);
+  
+})
+})
+
 
 module.exports = router;

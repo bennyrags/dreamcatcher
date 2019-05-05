@@ -6,6 +6,7 @@ import dreams from './dreamsReducer'
 import dream from './dreamReducer'
 import themes from './themesReducer'
 import theme from './themeReducer'
+import themeCountReducer from './themeCountReducer'
 import dreamAdd from './dreamAddReducer'
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   dream,
   themes,
   theme,
+  themeCountReducer,
   dreamAdd
 });
 

@@ -25,8 +25,28 @@ function* fetchThemes(action) {
   }
 }
 
+function* fetchThemeCount(action) {
+  try {
+    const config = {
+      headers: { 'Content-Type': 'application/json' },
+      withCredentials: true,
+    };
+    const id = action.payload;
+    const response = yield axios.get(`api/Themes/count/${id}`, config);
+    yield put({ type: 'SET_THEME_COUNT', payload: response.data });
+
+  }
+
+  catch (error) {
+    alert(`There was an error when fetching your themes count. Please try again later.`);
+    console.log(`Error when making call to server for themes count`);
+    
+  }
+}
+
 function* themesSaga() {
   yield takeLatest('FETCH_THEMES', fetchThemes);
+  yield takeLatest('FETCH_THEME_COUNT', fetchThemeCount);
 }
 
 export default themesSaga;
