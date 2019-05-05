@@ -33,14 +33,19 @@ goToInfo = () => {
 
 
 componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_THEMES', payload: this.props.user.id })
-    this.props.dispatch({ type: 'FETCH_DREAMS', payload: this.props.user.id })
+    this.props.dispatch({ type: 'FETCH_THEME_COUNT', payload: this.props.user.id })
+   
 }
 
 componentDidUpdate(prevProps) {
-    if(this.props.themes !== prevProps.themes && this.props.dreams !== prevProps.dreams) {
+    if(this.props.themeCountReducer !== prevProps.themeCountReducer) {
         let labels = [];
         let data = [];
+
+        for (let theme of this.props.themeCountReducer) {
+            labels.push(theme.theme_name);
+        }
+        console.log(`labels in themeChart:`, labels)
         //ok what am i measuring here? how many times each theme was used. where is that info? 
         //it is in the themes / dreams join table
         //SO
