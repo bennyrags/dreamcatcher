@@ -5,9 +5,7 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-
 import {connect} from 'react-redux';
-
 import Nav from '../Nav/Nav';
 //import Footer from '../Footer/Footer';
 
