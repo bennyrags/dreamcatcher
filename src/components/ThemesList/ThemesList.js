@@ -65,8 +65,8 @@ else {
         <p>{theme.theme_description}</p>
         </li>
         )}
-        
     </ul>
+    <Button onClick={this.goToAddTheme}>Add Theme</Button>
 </section>
 <section className='containerBottom'>
 <Grid container

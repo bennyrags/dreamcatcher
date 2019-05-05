@@ -69,15 +69,6 @@ componentDidUpdate(prevProps) {
         console.log(`themesBackground in themeChart:`, themesBackground);
         
         this.updateState(themesLabels,themesData,themesBackground);
-        //ok what am i measuring here? how many times each theme was used. where is that info? 
-        //it is in the themes / dreams join table
-        //SO
-        //to get this information, I need to do a special query - and saga and reducer(?) that returns the theme numbers and their associated titles, and the amount of time they are used in the dreams
-        //loop through both and check to see if the number of the theme equals one of the numbers in the dream?
-        //no
-        //it has to come from that join table
-        //i think it needs to be a sql query that returns this info. 
-        //query - get the names of the themes and the number of dreams they belong to. 
     }
 }
 

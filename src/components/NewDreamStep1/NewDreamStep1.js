@@ -16,7 +16,7 @@ horraceDream = () => {
   this.setState({
     newDream: {
       ...this.state.newDream,
-      description: 'I had a dream of being chased all over the bronx botanical gareden by a giant, pulsing canoli'
+      description: 'chased all over the bronx botanical garden by a giant, pulsing canoli'
     }
   })
 }

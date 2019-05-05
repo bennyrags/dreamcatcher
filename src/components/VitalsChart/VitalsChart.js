@@ -19,7 +19,7 @@ state = {
       {
         label: 'Temp',
         lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
+        backgroundColor: 'transparent',
         borderColor: 'rgba(75,192,192,1)',
         borderCapStyle: 'butt',
         borderDash: [],
@@ -38,8 +38,8 @@ state = {
       {
         label: 'Mood',
         lineTension: 0.1,
-         backgroundColor: 'rgba(192,75,75,0.4)',
-        borderColor: 'rgba(192,75,75,1)',
+       backgroundColor: 'transparent',
+        borderColor: 'rgba(255,165,0, 1)',
         borderCapStyle: 'butt',
         borderDash: [],
         borderDashOffset: 0.0,
