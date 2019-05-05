@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 import Nav from '../Nav/Nav';
 //import Footer from '../Footer/Footer';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
@@ -20,24 +20,24 @@ import './App.css';
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import theme from '../StyleThemes/themes';
 import NewDreamStep1 from '../NewDreamStep1/NewDreamStep1';
-import NewDreamStep2 from '../NewDreamStep2/NewDreamStep2'
-import NewDreamStep3 from '../NewDreamStep3/NewDreamStep3'
-import NewDreamStep4 from '../NewDreamStep4/NewDreamStep4'
-import DreamsList from '../DreamsList/DreamsList'
-import SubmitDream from '../SubmitDream/SubmitDream'
-import SubmittedDream from '../SubmittedDream/SubmittedDream'
-import Dream from '../Dream/Dream'
-import ThemesList from '../ThemesList/ThemesList'
-import ThemeAddNew from '../ThemeAddNew/ThemeAddNew'
-import Theme from '../Theme/Theme'
-import Chart from '../Chart/Chart'
+import NewDreamStep2 from '../NewDreamStep2/NewDreamStep2';
+import NewDreamStep3 from '../NewDreamStep3/NewDreamStep3';
+import NewDreamStep4 from '../NewDreamStep4/NewDreamStep4';
+import DreamsList from '../DreamsList/DreamsList';
+import SubmitDream from '../SubmitDream/SubmitDream';
+import SubmittedDream from '../SubmittedDream/SubmittedDream';
+import Dream from '../Dream/Dream';
+import ThemesList from '../ThemesList/ThemesList';
+import ThemeAddNew from '../ThemeAddNew/ThemeAddNew';
+import Theme from '../Theme/Theme';
+import VitalsChart from '../VitalsChart/VitalsChart';
+import ThemeChart from '../ThemeChart/ThemeChart';
 
 
 class App extends Component {
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'});
   }
-
 
   
   render() {
@@ -132,8 +132,13 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/chart"
-              component={Chart}
+              path="/vitals-chart"
+              component={VitalsChart}
+            />
+            <ProtectedRoute
+              exact
+              path="/theme-chart"
+              component={ThemeChart}
             />
 
 

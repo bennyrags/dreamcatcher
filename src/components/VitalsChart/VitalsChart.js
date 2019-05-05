@@ -1,56 +1,13 @@
 import React, { Component } from "react";
 import {Line} from 'react-chartjs-2';
 import moment from 'moment';
-import './Chart.css'
+import './VitalsChart.css'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
 import { connect } from 'react-redux'
-/*
-THIS IS CODE FROM SPIKE! - 4-24-2019
 
-Objective: get dynamic info into chart.js chart. 
-This was mostly accomplished. First I created an array of objects similar to one I might expect from a get req to the database. That is represented in the chartInfo const below
-*/
 
-// const chartInfo = [
-//     {
-//         date: '11/20/18',
-//         mood: 2,
-//         temp: 3
-//     },
-//     {
-//         date: '11/23/18',
-//         mood: 5,
-//         temp: 2
-//     },
-//     {
-//         date: '11/24/18',
-//         mood: 1,
-//         temp: 3
-//     },
-//     {
-//         date: '11/25/18',
-//         mood: 4,
-//         temp: 1
-//     },
-//     {
-//         date: '11/26/18',
-//         mood: 2,
-//         temp: 5
-//     },
-//     {
-//         date: '11/29/18',
-//         mood: 3,
-//         temp: 4
-//     },
-//     {
-//         date: '12/02/18',
-//         mood: 1,
-//         temp: 4
-//     }
-// ];
-
-class Chart extends Component {
+class VitalsChart extends Component {
 
 //The state is the setup for a chartJs using the example from https://github.com/jerairrest/react-chartjs-2
 
@@ -149,8 +106,8 @@ addStuffToState = (mood,temp,dates) => {
 
 }
 
-goHome = () => {
-    this.props.history.push('/')
+goToInfo = () => {
+    this.props.history.push('/info')
 }
 
 
@@ -234,7 +191,7 @@ justify='space-evenly'
 
 >
     <Grid item>
-            <Button onClick={this.goHome}>Home</Button>
+            <Button onClick={this.goToInfo}>Your Info</Button>
 
     </Grid>
     </Grid>
@@ -247,8 +204,8 @@ justify='space-evenly'
 
 const mapStateToProps = state => ({
     user: state.user,
-    dreams: state.dreams
+    dreams: state.dreams.reverse()
   });
   
 
-export default connect(mapStateToProps)(Chart);
+export default connect(mapStateToProps)(VitalsChart);
