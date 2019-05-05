@@ -16,6 +16,10 @@ state = {
   }
 }
 
+goHome = () => {
+  this.props.history.push('/')
+}
+
 vitalsChart = () => {
   this.props.history.push('/vitals-chart')
 }
