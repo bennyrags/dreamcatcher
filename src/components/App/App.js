@@ -30,7 +30,8 @@ import Dream from '../Dream/Dream'
 import ThemesList from '../ThemesList/ThemesList'
 import ThemeAddNew from '../ThemeAddNew/ThemeAddNew'
 import Theme from '../Theme/Theme'
-import Chart from '../Chart/Chart'
+import VitalsChart from '../VitalsChart/VitalsChart'
+import ThemeChart from '../ThemeChart/ThemeChart'
 
 
 class App extends Component {
@@ -132,8 +133,13 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/chart"
-              component={Chart}
+              path="/vitals-chart"
+              component={VitalsChart}
+            />
+            <ProtectedRoute
+              exact
+              path="/theme-chart"
+              component={ThemeChart}
             />
 
 
