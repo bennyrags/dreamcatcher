@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
-//import {HashRouter as Router} from 'react-router-dom';
 
 class NewDreamStep1 extends Component {
 
@@ -40,7 +39,6 @@ nextStep = () => {
 }
 
     render() {
-      console.log(`this is state inside of newDreamStep1`, this.state);
       
         return(
             <>
