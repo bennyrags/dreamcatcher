@@ -26,7 +26,8 @@ Create a new database, rename the db in server/modules/pool.js. Follow instructi
     ```
     SERVER_SESSION_SECRET=secret code
     ```
- In `.env` file, replace `superDuperSecret` with some long random string for security. You can use a site like  [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
+ In `.env` file, replace `secret code` with some long random string for security. You can use a site like  [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `secret code`, you will get a warning.
+ 
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server`
 * Run `npm run client`
