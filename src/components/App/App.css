@@ -16,9 +16,10 @@ body {
 
 body::before{
     content: '';
-    background-color:tomato;
-    height:100%;
-    position:absolute;
+    background:tomato;
+   background-attachment: fixed;
+ position:absolute;
+ 
     top:0;
     left:0;
     right:0;
