@@ -3,7 +3,7 @@ const pool = require('../modules/pool');
 //const userStrategy = require('././strategies/user.strategy');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
-
+const moment = require('moment');
 
 // Handles POST request with new user data
 // The only thing different from this and every other post 
@@ -70,7 +70,7 @@ router.post('/', rejectUnauthenticated, async (req, res) => {
         const themeQuery = `INSERT INTO "themes_dreams" ("theme_id","dream_id") VALUES ($1,$2)`;
 
         await client.query('BEGIN')
-        const dreamResults = await client.query(dreamQuery, [dream.user_id, new Date().toISOString(), dream.description, dream.score_temp, dream.score_mood]);
+        const dreamResults = await client.query(dreamQuery, [dream.user_id, moment(dream.date).format('L'), dream.description, dream.score_temp, dream.score_mood]);
         const dreamId = dreamResults.rows[0].id;
 
 

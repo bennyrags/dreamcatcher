@@ -4,10 +4,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
-
-// Handles POST request with new user data
-// The only thing different from this and every other post we've seen
-// is that the password gets encrypted before being inserted
 router.get('/:id', rejectUnauthenticated, (req, res, next) => {  
   const id = req.params.id;
     const queryText = `SELECT * FROM "dreams" WHERE "user_id" = $1 ORDER BY "date" DESC`;
@@ -22,11 +18,5 @@ router.get('/:id', rejectUnauthenticated, (req, res, next) => {
     }
     );
 })
-
-// router.get('/id:/dreams', (req,res,next) => {
-// //assume that id is sent with req so I can get dreams just for this id.
-//     const id = req.params.id;
-//     const queryText = ''
-// }); 
 
 module.exports = router;
