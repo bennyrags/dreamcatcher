@@ -18,7 +18,7 @@ body::before{
     content: '';
     background:tomato;
    background-attachment: fixed;
- position:absolute;
+ position:fixed;
  
     top:0;
     left:0;
@@ -43,6 +43,12 @@ body::before{
     margin:auto;
     height:500px;
     text-align:center;
+}
+
+@media (max-height:375px) {
+    .container {
+        height: 300px;
+    }
 }
 
 .containerUserPage {
@@ -121,10 +127,15 @@ align-self:flex-end;
       display: block;
 
     }
-.container input[type='text'] {
+    .container input[type='text'] {
     width: 60%;
+}
+
+.gridContainer > div > input[type='text'],
+.container input[type='text'] {
     padding: 10px 5px;
 }
+
 
     .containerMiddle > label {
         display:block !important;
@@ -283,4 +294,11 @@ li > p {
     border: 1px solid transparent;
     background:transparent;
     display: block;
+}
+
+.aboutContainer {
+    align-self: center;
+    text-align:left;
+    width:90%;
+    margin: auto;
 }

@@ -7,9 +7,15 @@ import React from 'react';
 
 const AboutPage = () => (
   <div>
-    <div>
+      <h1>
+Dreamcatcher is an app for dreamers.
+      </h1>
+      <div className='aboutContainer'>
       <p>
-        This about page is for anyone to read!
+        The idea from the app came from my often vivid dreams and a blank tablet by my bed. I was always told to put my dreams to paper, as a way of understanding my psyche. I rarely did. 
+      </p>
+      <p>
+        I look at my phone a lot. It's the first thing I look at in the morning. It seemed only natural to build an app that could be used on a phone to track dreams. 
       </p>
     </div>
   </div>
