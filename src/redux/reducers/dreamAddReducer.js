@@ -3,10 +3,11 @@ const newDream = {
     themes: [],
     dreamInfo: {
         user_id: 0,
-        // date: new Date(),
+        date: '',
         description: '',
         score_temp: 0,
         score_mood: 0,
+        date:null
 
     }
 }
@@ -19,6 +20,7 @@ const dreamAddReducer = (state = newDream, action) => {
             ...state.dreamInfo,
             user_id: Number(action.payload.id),
             description: action.payload.description,
+            date: new Date()
         }
         };
     }
