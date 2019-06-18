@@ -11,7 +11,7 @@ CREATE TABLE "user" (
 
 CREATE TABLE "dreams" (
     id SERIAL PRIMARY KEY,
-    user_id integer REFERENCES "user"."id",
+    user_id integer REFERENCES "user",
     date date NOT NULL,
     description character varying(5000) NOT NULL,
     score_temp integer NOT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE themes (
     theme_name character varying(100) NOT NULL,
     theme_description character varying(500),
     theme_creation_date date NOT NULL,
-    user_id integer REFERENCES "user"."id"
+    user_id integer REFERENCES "user"
     );
 
 CREATE TABLE themes_dreams (
