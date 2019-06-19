@@ -117,7 +117,7 @@ className='gridContainer'
 <label>Password</label>
             <input
               label='Password'
-              type="text"
+              type="password"
               name="password"
               value={this.state.password}
               onChange={this.handleInputChangeFor('password')}
