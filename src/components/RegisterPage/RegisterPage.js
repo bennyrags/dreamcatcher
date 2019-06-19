@@ -13,16 +13,6 @@ class RegisterPage extends Component {
   };
 
 
-  registerHorrace = () => {
-    this.setState({
-      firstName: 'Horrace',
-      lastName: 'Muzhik',
-      email: 'horrace@bronx.com',
-      username: 'horracem',
-      password: 'horracem',
-    })
-  }
-
   registerUser = (event) => {
     event.preventDefault();
 
@@ -52,7 +42,6 @@ class RegisterPage extends Component {
     return (
       <>
         <section className='containerHeader'>
-        <button className='horrace' onClick={this.registerHorrace}></button>
 
           <h1>Register User</h1>
         </section>
