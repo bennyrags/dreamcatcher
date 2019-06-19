@@ -19,7 +19,6 @@ body::before{
     background:tomato;
    background-attachment: fixed;
  position:fixed;
- 
     top:0;
     left:0;
     right:0;
@@ -114,10 +113,10 @@ align-self:flex-end;
     display:block;
   }
 
-  .container input[type='password'], 
+  /* .container input[type='password'], 
   .container input[type='username'] {
       padding: 10px 20px;
-  }
+  } */
 
   .container .textField {
       width:95%;
@@ -130,6 +129,21 @@ align-self:flex-end;
     .container input[type='text'] {
     width: 60%;
 }
+
+
+.gridContainer,
+.gridContainer > div > input[type='text'],
+.gridContainer > div > input[type='password'],
+.container input[type='text'] {
+    width: 100% !important; 
+}
+
+.gridContainer > div > input[type='text'],
+.gridContainer > div > input[type='password'],
+.container input[type='text'] {
+    padding: 10px 5px;
+}
+
 
 .gridContainer > div > input[type='text'],
 .container input[type='text'] {
@@ -250,11 +264,11 @@ loginFieldContainer {
 .tempTextFieldClass label {
     color:white !important;
 }
-
+/* 
 input {
     margin: 5px;
     margin-bottom: 10px;
-}
+} */
 
 /*Adding !important to override mat ui stuff -chg*/
 .log-in, .log-out, .register, .mainButton, .link-button  {
@@ -287,18 +301,15 @@ li > p {
     margin: 5px 0;
 }
 
-/*For presentation*/
-.horrace {
-    width: 30px;
-    height:20px;
-    border: 1px solid transparent;
-    background:transparent;
-    display: block;
-}
+
 
 .aboutContainer {
     align-self: center;
     text-align:left;
     width:90%;
     margin: auto;
+}
+
+.registrationContainer {
+    width:100% !important;
 }
