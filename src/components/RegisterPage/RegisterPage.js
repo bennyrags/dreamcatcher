@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './RegistrationPage.css';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid'
+import RegisterAlert from './RegisterAlert'
 class RegisterPage extends Component {
   state = {
     firstName: '',
@@ -47,12 +48,8 @@ class RegisterPage extends Component {
         </section>
         <section className='containerMiddle'>
           {this.props.errors.registrationMessage && (
-            <h2
-              className="alert"
-              role="alert"
-            >
-              {this.props.errors.registrationMessage}
-            </h2>
+                 <RegisterAlert />
+
           )}
 
           <form onSubmit={this.registerUser}>
