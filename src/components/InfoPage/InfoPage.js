@@ -63,7 +63,7 @@ themeChart = () => {
       {this.props.user.first_name}'s Dream Info
     </h1>
     </section>
-    <section className='containerMiddle'>
+    <section className='infoPage containerMiddle'>
     <h2>Dreams and Themes</h2>
 <h4>You have {this.props.dreams.length} dreams</h4>
 <h4>You have {this.props.themes.length} themes</h4>

@@ -323,7 +323,6 @@ li > p {
 .registrationContainer {
     width:100% !important;
 }
-
-.infoButtons {
-    height: 40px;
+.container.containerUserPage {
+    height:initial !important
 }
