@@ -323,3 +323,7 @@ li > p {
 .registrationContainer {
     width:100% !important;
 }
+
+.infoButtons {
+    height: 40px;
+}

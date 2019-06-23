@@ -67,13 +67,13 @@ themeChart = () => {
     <h2>Dreams and Themes</h2>
 <h4>You have {this.props.dreams.length} dreams</h4>
 <h4>You have {this.props.themes.length} themes</h4>
-<Button onClick={this.themeChart}>Theme Chart</Button>
+<Button className='infoButtons' onClick={this.themeChart}>Theme Chart</Button>
 
 
 <h2>Vitals</h2>
 <h4>Your average temp score is {this.state.avgs.temp}</h4>
 <h4>Your average mood score is {this.state.avgs.mood}</h4>
-<Button onClick={this.vitalsChart}>Vitals Chart</Button>
+<Button className='infoButtons' onClick={this.vitalsChart}>Vitals Chart</Button>
 
 
 </section>
