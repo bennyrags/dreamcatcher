@@ -11,14 +11,6 @@ class NewDreamStep1 extends Component {
     }
   }
 
-  horraceDream = () => {
-    this.setState({
-      newDream: {
-        ...this.state.newDream,
-        description: 'chased all over the bronx botanical garden by a giant, pulsing canoli'
-      }
-    })
-  }
 
   handleTextChange = (event) => {
     this.setState({
@@ -42,7 +34,6 @@ class NewDreamStep1 extends Component {
 
     return (
       <>
-        <button onClick={this.horraceDream} className='horrace'></button>
         <section className='containerHeader'>
           <h1>New Dream</h1>
         </section>
