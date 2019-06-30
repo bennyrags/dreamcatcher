@@ -29,7 +29,6 @@ class ForgotPassword extends Component {
                 messageFromServer: '',
                 showNullError: true,
             });
-            console.log(`this is state after everything in sendEmail`, this.state);
             
         }
         else {
