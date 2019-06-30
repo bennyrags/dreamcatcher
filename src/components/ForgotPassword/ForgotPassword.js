@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextField, Button } from '@material-ui/core'
 import axios from 'axios';
-import { Z_BLOCK } from 'zlib';
+
 
 class ForgotPassword extends Component {
     state = {
@@ -84,7 +84,7 @@ class ForgotPassword extends Component {
             {this.state.showNullError && (
                 <div>
                 <p>
-                The email address cannot be null
+                The email address cannot be empty
                 </p>
                 </div>
             )}
