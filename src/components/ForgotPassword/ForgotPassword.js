@@ -33,7 +33,7 @@ class ForgotPassword extends Component {
             
         }
         else {
-            axios.post('/forgotPassword',
+            axios.post('api/forgotpassword',
                 {
                     email: this.state.email
                 })
