@@ -28,6 +28,7 @@ import ThemeAddNew from '../ThemeAddNew/ThemeAddNew';
 import Theme from '../Theme/Theme';
 import VitalsChart from '../VitalsChart/VitalsChart';
 import ThemeChart from '../ThemeChart/ThemeChart';
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
 
 
 class App extends Component {
@@ -134,6 +135,11 @@ class App extends Component {
               exact
               path="/theme-chart"
               component={ThemeChart}
+            />
+            <ProtectedRoute
+              exact
+              path="/forgot-password"
+              component={ForgotPassword}
             />
 
 
