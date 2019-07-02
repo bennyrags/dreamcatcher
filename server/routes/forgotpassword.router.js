@@ -6,7 +6,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 require('dotenv').config();
 const User = require('../sequelize');
-
+const nodemailer = require('nodemailer');
 
 //console.log(`this is crypto.randomBytes(20)toString('hex'):`, crypto.randomBytes(20).toString('hex'));
 
@@ -32,7 +32,37 @@ else {
    user.update({
        resetPasswordToken: token,
        resetPasswordExpires: Date.now() + 360000,
-   }) 
+   }); 
+
+   const transporter = nodemailer.createTransport({
+       service: 'gmail',
+       auth: {
+           user: `${process.env.EMAIL_ADDRESS}`,
+           pass: `${process.env.EMAIL_PASSWORD}`
+       }
+   })
+   const mailOptions = {
+       from: `${process.env.EMAIL_ADDRESS}`,
+       to: `${user.email}`,
+       subject: `Link to reset password`,
+       text: 
+       `You are receiving this email because you requested th reset the password for your account.\n\n`+
+       `Please click on the following link within an hour of receiving it.\n\n`+
+       `http://localhost:3000/reset/${token}`
+   }
+   console.log(`sending email`);
+   transporter.sendMail(mailOptions, function(err, response){
+       if (err) {
+           console.log(`there was an error sending email:`, err);           
+       }
+       else {
+           console.log(`here is the response:`, response);
+           res.send(`recovery email sent`);
+           res.sendStatus(200);
+           
+       }
+   })
+   
 }
 })
 
