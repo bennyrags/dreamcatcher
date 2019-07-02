@@ -7,8 +7,17 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 require('dotenv').config();
 const User = require('../sequelize');
 const nodemailer = require('nodemailer');
+const mg = require('nodemailer-mailgun-transport');
 
 //console.log(`this is crypto.randomBytes(20)toString('hex'):`, crypto.randomBytes(20).toString('hex'));
+
+const auth = {
+    auth: {
+        api_key: `${process.env.MG_KEY}`,
+        domain: `${process.env.MG_DOMAIN}`,
+    }
+}
+
 
 router.post('/', rejectUnauthenticated, (req,res,next)=>{
 console.log(`this is req.body.email:`, req.body.email);
@@ -34,13 +43,7 @@ else {
        resetPasswordExpires: Date.now() + 360000,
    }); 
 
-   const transporter = nodemailer.createTransport({
-       service: 'gmail',
-       auth: {
-           user: `${process.env.EMAIL_ADDRESS}`,
-           pass: `${process.env.EMAIL_PASSWORD}`
-       }
-   })
+   const transporter = nodemailer.createTransport(mg(auth))
    const mailOptions = {
        from: `${process.env.EMAIL_ADDRESS}`,
        to: `${user.email}`,
