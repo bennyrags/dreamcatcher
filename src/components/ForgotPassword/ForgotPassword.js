@@ -80,6 +80,14 @@ class ForgotPassword extends Component {
                 </Button>
 
             </form>
+            {this.state.messageFromServer === 'recovery email sent' && (
+                <div>
+                    <p>
+                        Recovery email has been sent. Please click on link in email.
+                    </p>
+                </div>
+            )}
+
             {this.state.showNullError && (
                 <div>
                 <p>
