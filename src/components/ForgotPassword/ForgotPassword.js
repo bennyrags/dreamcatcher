@@ -32,7 +32,7 @@ class ForgotPassword extends Component {
             
         }
         else {
-            axios.post('api/forgotpassword',
+            axios.post('/api/forgotpassword',
                 {
                     email: this.state.email
                 })
@@ -53,7 +53,7 @@ class ForgotPassword extends Component {
 
                 })
                 .catch(error => {
-                    console.log(error.data)
+                    console.log(`this is errror in axios req:`, error)
                 });
         }
 
