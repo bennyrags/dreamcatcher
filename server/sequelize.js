@@ -2,7 +2,11 @@ const Sequelize = require('sequelize');
 const UserModel = require('./modules/user');
 require('dotenv').config();
 
-const sequelize = new Sequelize(process.env.DB_URL);
+const sequelize = new Sequelize(process.env.DB_URL, {
+    define: {
+        freezeTableName: false,
+    }
+});
 const User = UserModel(sequelize, Sequelize);
 
 if (process.env.DB_URL) {
@@ -10,7 +14,7 @@ if (process.env.DB_URL) {
 }
 
 sequelize.sync().then(() => {
-  console.log('Users db and user table have been created');
+  console.log('User db and user table have been created');
 });
 
 module.exports = User;

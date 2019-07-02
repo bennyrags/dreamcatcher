@@ -13,8 +13,30 @@ const User = require('../sequelize');
 router.post('/', rejectUnauthenticated, (req,res,next)=>{
 console.log(`this is req.body.email:`, req.body.email);
     if (req.body.email==='') {
-    res.status(400).send('email not in db')
+    res.send('email not in db');
+    res.sendStatus(400)
 }
+User.findOne({
+    where: {
+        email: req.body.email
+    }
+})
+.then( user => {
+if (user===null) {
+    console.log(`email not in database`);
+    res.json('User not in database')
+}
+else {
+    const token = crypto.randomBytes(20).toString('hex');
+    console.log(token);
+   user.update({
+       resetPasswordToken: token,
+       resetPasswordExpires: Date.now() + 360000,
+   }) 
+}
+})
+
+
 })
 
 

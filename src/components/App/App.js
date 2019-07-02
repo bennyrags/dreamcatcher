@@ -55,6 +55,11 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
+             <Route
+              exact
+              path="/forgot-password"
+              component={ForgotPassword}
+            />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -136,11 +141,7 @@ class App extends Component {
               path="/theme-chart"
               component={ThemeChart}
             />
-            <ProtectedRoute
-              exact
-              path="/forgot-password"
-              component={ForgotPassword}
-            />
+           
 
 
             {/* If none of the other routes matched, we will show a 404. */}
