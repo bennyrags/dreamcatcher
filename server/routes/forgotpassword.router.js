@@ -33,13 +33,39 @@ const auth = {
         console.log(token);
         pool.query(`UPDATE "user" SET "resetPasswordToken" = $1, "resetPasswordExpires" = $2 WHERE "email"=$3`, [token, Date.now() + 360000, req.body.email])
         .then(result=>{
-            res.status(200).send('code inserted into DB')
-        })
+            // res.status(200).send('code inserted into DB')
+             })
         .catch(error=>{
             res.status(500).send('500 - error inseting code into db')
             console.log(`error inserting code into db:`, error);
-            
-        })
+            })
+        ///this is where I'm going to try to get the mail to go
+        const transporter = nodemailer.createTransport(mg(auth));
+           const mailOptions = {
+               from: `${process.env.EMAIL_ADDRESS}`,
+               to: `${req.body.email}`,
+               subject: `Link to reset password`,
+               text: 
+               `You are receiving this email because you requested th reset the password for your account.\n\n`+
+               `Please click on the following link within an hour of receiving it.\n\n`+
+               `http://localhost:3000/reset/${token}`
+           }
+           console.log(`sending email`);
+           transporter.sendMail(mailOptions, function(err, response){
+               if (err) {
+                   console.log(`there was an error sending email:`, err);           
+               }
+               else {
+                   console.log(`here is the response:`, response);
+                   res.status(200).send(`recovery email sent`);
+                   //res.sendStatus(200);
+                   
+               }
+            });
+       
+    
+    
+    
     }
 
 
