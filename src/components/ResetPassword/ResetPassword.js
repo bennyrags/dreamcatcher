@@ -15,13 +15,28 @@ error: false
 
 async componentDidMount() {
 
-    console.log(`this.props.match.params.token:`, this.props.match);
+const urlSplit =   window.location.href.split('/');
+const token = urlSplit[urlSplit.length-1];
 
-await axios.get('/reset',  {
+
+      try {
+        console.log(`this is token,`, token );
+
+
+const response = await axios.get('/reset',  {
     params: {
-        resetPasswordToken: this.props.match.params.token
+        resetPasswordToken: token
     }
-}) 
+})
+    console.log(`response from axios call:`, response);
+    
+      }
+      catch (err) {
+          console.log(`this is error in async comp did mount:`, err);
+          
+      }
+
+    
 }
 
 
