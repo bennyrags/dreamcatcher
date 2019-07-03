@@ -48,7 +48,7 @@ const auth = {
                text: 
                `You are receiving this email because you requested th reset the password for your account.\n\n`+
                `Please click on the following link within an hour of receiving it.\n\n`+
-               `http://localhost:3000/reset/${token}`
+               `http://localhost:3000/home#/reset/${token}`
            }
            console.log(`sending email`);
            transporter.sendMail(mailOptions, function(err, response){
