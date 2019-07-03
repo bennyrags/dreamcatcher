@@ -11,29 +11,47 @@ isLoading: true,
 error: false
 }
 
-
+getToken = () => {
+    const urlSplit =   window.location.href.split('/');
+    return urlSplit[urlSplit.length-1];
+    
+}
 
 async componentDidMount() {
+console.log(`this is getToken:`, this.getToken());
 
-const urlSplit =   window.location.href.split('/');
-const token = urlSplit[urlSplit.length-1];
-
+// const urlSplit =   window.location.href.split('/');
+// const token = urlSplit[urlSplit.length-1];
 
       try {
-        console.log(`this is token,`, token );
+        console.log(`this is token,`, this.getToken() );
 
 
 const response = await axios.get('/reset',  {
     params: {
-        resetPasswordToken: token
+        resetPasswordToken: this.getToken()
     }
 })
     console.log(`response from axios call:`, response);
     
+    if (response === 'password reset link a-ok') {
+        this.setState({
+            ...this.state,
+            username: response.data.username,
+            isLoading:false
+        })
+    }
+
+
+
       }
       catch (err) {
           console.log(`this is error in async comp did mount:`, err);
-          
+        this.setState({
+            ...this.state,
+            isLoading: false,
+            error:true
+        })      
       }
 
     
