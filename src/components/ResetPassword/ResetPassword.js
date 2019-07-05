@@ -12,7 +12,7 @@ password: '',
 email: '',
 updated: false,
 isLoading: true,
-error: false
+error: false,
 }
 
 parseParams = () => {
@@ -94,7 +94,7 @@ console.log(`response data message from axios call:`, response.data.message);
 
 updatePassword = async (e) => {
     e.preventDefault();
-    const { email, password } = this.state;
+    const { username, password, resetPasswordToken } = this.state;
     const {
       match: {
         params: { token },
@@ -103,13 +103,13 @@ updatePassword = async (e) => {
     try {
       const response = await axios.put('api/updatePasswordViaEmail',
         {
-          email,
+          username,
           password,
           resetPasswordToken: token,
         },
       );
       console.log(response.data);
-      if (response.data.message === 'password updated') {
+      if (response.data === 'password updated') {
         this.setState({
           updated: true,
           error: false,
@@ -164,6 +164,20 @@ onClick={()=>this.goToPage('/forgot-password')}
   Forgot Password
 </Button>
 </div>
+    )
+  }
+
+  else if (this.state.updated) {
+    return (
+      <div>
+        <h1>Reset Password Page</h1>
+      <h2>You're Password has been reset. Click below to login.</h2>
+      <Button
+onClick={()=>this.goToPage('/')}
+>
+  Login
+</Button>
+      </div>
     )
   }
  
