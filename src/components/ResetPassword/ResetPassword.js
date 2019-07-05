@@ -50,35 +50,43 @@ console.log(`inside setToken function, here is token`, token);
 }
 
 async componentDidMount() {
-console.log(`this is getToken:`, this.parseParams());
 
-// const urlSplit =   window.location.href.split('/');
-// const token = urlSplit[urlSplit.length-1];
-//console.log(`setToken`, this.setToken());
+const questParse = window.location.hash.split('?').slice(1);
+//console.log(`here is QUESTPARSE`, questParse);
+  const parsedParams=  qs.parse(questParse[0]);
 
       try {
       //  console.log(`this is token,`, this.setToken() );
 
-
-const response = await axios.get('api/reset/?resetPasswordToken=sadfasdf')
-    console.log(`response from axios call:`, response);
+ 
+const response = await axios.get(`api/reset/?resetPasswordToken=${parsedParams.token}`)
     
-    if (response === 'password reset link a-ok') {
+console.log(`response data from axios call:`, response.data);
+console.log(`response data message from axios call:`, response.data.message);
+    
+    if (response.data.message === 'password reset link a-ok') {
         this.setState({
             ...this.state,
             username: response.data.username,
             isLoading:false
         })
+        console.log(`this is state after a OK response:`, this.state);
+    }
+
+    else {
+      this.setState({
+        ...this.state,
+        isLoading: false,
+        error:true
+    }) 
+    console.log(`this is state after failed axios call,`, this.state);
+    
     }
 
       }
       catch (err) {
           console.log(`this is error in async comp did mount:`, err);
-        this.setState({
-            ...this.state,
-            isLoading: false,
-            error:true
-        })      
+            
       }
 
     
@@ -93,7 +101,7 @@ updatePassword = async (e) => {
       },
     } = this.props;
     try {
-      const response = await axios.put('/updatePasswordViaEmail',
+      const response = await axios.put('api/updatePasswordViaEmail',
         {
           email,
           password,
@@ -118,7 +126,9 @@ updatePassword = async (e) => {
   }; //end updatePassword
 
 
-
+goToPage = page => {
+  this.props.history.push(page);
+}
 
 
 
@@ -137,9 +147,33 @@ handleChange = name => event => {
 
 
 render(){
-    return(
-        <div>
-     <form onSubmit={this.sendEmail}>
+ 
+  if (this.state.error) {
+    return (
+<div>
+  <h1>Reset Password Page </h1>
+  <h4>There was a problem reseting your password. Please send another reset link</h4>
+<Button
+onClick={()=>this.goToPage('/')}
+>
+  Home
+</Button>
+<Button
+onClick={()=>this.goToPage('/forgot-password')}
+>
+  Forgot Password
+</Button>
+</div>
+    )
+  }
+ 
+  else {
+  return(
+     <div>
+       <h1>Reset Password Page </h1>
+
+     
+     <form onSubmit={this.updatePassword}>
                 <TextField
                     id='password'
                     label='new password'
@@ -159,6 +193,8 @@ render(){
             </form>
                     </div>
     )
+}
+
 }
 
 }//end Class
