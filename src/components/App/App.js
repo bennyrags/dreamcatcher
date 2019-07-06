@@ -28,7 +28,8 @@ import ThemeAddNew from '../ThemeAddNew/ThemeAddNew';
 import Theme from '../Theme/Theme';
 import VitalsChart from '../VitalsChart/VitalsChart';
 import ThemeChart from '../ThemeChart/ThemeChart';
-
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
+import ResetPassword from '../ResetPassword/ResetPassword'
 
 class App extends Component {
   componentDidMount () {
@@ -54,6 +55,16 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
+             <Route
+              exact
+              path="/forgot-password"
+              component={ForgotPassword}
+            />
+            <Route
+              path="/reset/"
+              component={ResetPassword}
+            />
+
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
@@ -135,6 +146,7 @@ class App extends Component {
               path="/theme-chart"
               component={ThemeChart}
             />
+           
 
 
             {/* If none of the other routes matched, we will show a 404. */}

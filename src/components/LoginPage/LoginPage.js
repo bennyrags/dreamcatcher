@@ -8,6 +8,10 @@ class LoginPage extends Component {
     password: '',
   };
 
+  forgotPW = () => {
+this.props.history.push('/forgot-password')
+  }
+
   login = (event) => {
     event.preventDefault();
 
@@ -68,6 +72,8 @@ class LoginPage extends Component {
           value={this.state.password}
           onChange={this.handleInputChangeFor('password')}
             />
+            <br />
+            <a className='forgotPw' onClick={this.forgotPW}>Forgot your Password?</a>
           </div>
 
           <div>
