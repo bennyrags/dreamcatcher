@@ -311,8 +311,6 @@ li > p {
     margin: 5px 0;
 }
 
-
-
 .aboutContainer {
     align-self: center;
     text-align:left;
@@ -325,4 +323,12 @@ li > p {
 }
 .container.containerUserPage {
     height:initial !important
+}
+
+.forgotPw {
+    margin:5px 0 20px;
+    display:block;
+    color:blue;
+    cursor:pointer;
+
 }

@@ -131,12 +131,6 @@ goToPage = page => {
 }
 
 
-
-
-
-
-
-
 handleChange = name => event => {
     this.setState({
         ...this.state,
@@ -199,7 +193,6 @@ onClick={()=>this.goToPage('/')}
                 <br />
                 <Button
                     type='submit'
-                    
                 >
                     Submit
                 </Button>
