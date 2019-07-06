@@ -93,7 +93,7 @@ updatePassword = async (e) => {
           resetPasswordToken: token,
         },
       );
-      console.log(response.data);
+      //console.log(response.data);
       if (response.data === 'password updated') {
         this.setState({
           updated: true,

@@ -64,6 +64,7 @@ class ForgotPassword extends Component {
         return (
             <>
             <form onSubmit={this.sendEmail}>
+                <h1>Enter Email to Reset Password</h1>
                 <TextField
                     id='email'
                     label='email'
@@ -73,8 +74,7 @@ class ForgotPassword extends Component {
                 />
                 <br />
                 <Button
-                    type='submit'
-                    
+                    type='submit'   
                 >
                     Submit
                 </Button>
