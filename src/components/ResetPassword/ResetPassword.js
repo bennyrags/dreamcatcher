@@ -16,53 +16,38 @@ error: false,
 }
 
 parseParams = () => {
-    console.log(`this is window location search`, window.location.search);
-    console.log(`this is window location HASH`, window.location.hash);
-    console.log(`this is window location HASH SPLIT`, window.location.hash.split('='));
+    // console.log(`this is window location search`, window.location.search);
+    // console.log(`this is window location HASH`, window.location.hash);
+    // console.log(`this is window location HASH SPLIT`, window.location.hash.split('='));
     this.setState({
         ...this.state, 
         email: window.location.hash.split('=')[2]
     })
     const splitEq = window.location.hash.split('=')[1];
-    console.log(`splitEq`, splitEq);
+    //console.log(`splitEq`, splitEq);
     const token = splitEq.split('&')[0];
     
     this.setToken(token);
-    console.log(`token in parseParams Function,`, token);
-    
-    // const token = splitEq.split('&')[0];
-    // console.log(`here is token:`, token)
-
-    // console.log(`this is window location HASH QS PARSE`, qs.parse(window.location.hash));
-
-    // console.log(`this is urlSplit[1]`, urlSplit[1]);
-    // return urlSplit[0]
-    
-
-    //return urlSplit[urlSplit.length-1];
-    
+    //console.log(`token in parseParams Function,`, token);    
 }
 
 setToken = (token) => {
-console.log(`inside setToken function, here is token`, token);
-
+//console.log(`inside setToken function, here is token`, token);
     return token;
 }
 
 async componentDidMount() {
 
 const questParse = window.location.hash.split('?').slice(1);
-//console.log(`here is QUESTPARSE`, questParse);
   const parsedParams=  qs.parse(questParse[0]);
 
       try {
       //  console.log(`this is token,`, this.setToken() );
 
- 
 const response = await axios.get(`api/reset/?resetPasswordToken=${parsedParams.token}`)
     
-console.log(`response data from axios call:`, response.data);
-console.log(`response data message from axios call:`, response.data.message);
+// console.log(`response data from axios call:`, response.data);
+// console.log(`response data message from axios call:`, response.data.message);
     
     if (response.data.message === 'password reset link a-ok') {
         this.setState({
@@ -70,7 +55,7 @@ console.log(`response data message from axios call:`, response.data.message);
             username: response.data.username,
             isLoading:false
         })
-        console.log(`this is state after a OK response:`, this.state);
+//        console.log(`this is state after a OK response:`, this.state);
     }
 
     else {
@@ -79,13 +64,13 @@ console.log(`response data message from axios call:`, response.data.message);
         isLoading: false,
         error:true
     }) 
-    console.log(`this is state after failed axios call,`, this.state);
+ //   console.log(`this is state after failed axios call,`, this.state);
     
     }
 
       }
       catch (err) {
-          console.log(`this is error in async comp did mount:`, err);
+ //         console.log(`this is error in async comp did mount:`, err);
             
       }
 
