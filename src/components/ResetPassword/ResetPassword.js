@@ -86,7 +86,7 @@ updatePassword = async (e) => {
       },
     } = this.props;
     try {
-      const response = await axios.put('api/updatePasswordViaEmail',
+      const response = await axios.put('api/resetpassword',
         {
           username,
           password,
