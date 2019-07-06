@@ -15,7 +15,7 @@ const dreamRouter = require('./routes/dream.router');
 const themesRouter = require('./routes/themes.router');
 const themeRouter = require('./routes/theme.router');
 const forgotPass = require('./routes/forgotpassword.router');
-const resetPass = require('./routes/resetPassword.router');
+const checkToken = require('./routes/checkToken.router');
 const updatePasswordViaEmail = require('./routes/updatePasswordViaEmail.router')
 // Body parser middleware
 app.use(bodyParser.json());
@@ -35,7 +35,7 @@ app.use('/api/dream', dreamRouter);
 app.use('/api/theme', themeRouter);
 app.use('/api/themes', themesRouter);
 app.use('/api/forgotpassword', forgotPass);
-app.use('/api/reset', resetPass);
+app.use('/api/checktoken', checkToken);
 app.use('/api/updatePasswordViaEmail', updatePasswordViaEmail);
 // Serve static files
 app.use(express.static('build'));

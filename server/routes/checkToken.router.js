@@ -6,7 +6,7 @@ const pool = require('../modules/pool');
       console.log(`this is req.query:`, req.query.resetPasswordToken);
       
      //return res.status(200).send(req.query.resetPasswordToken);
-     //check to see if number is valid, less than one hour old
+     //check to see if token is valid, less than one hour old
 
      let queryText = `SELECT "user"."resetPasswordExpires", "user"."username" FROM "user" WHERE "resetPasswordToken"=$1`
      

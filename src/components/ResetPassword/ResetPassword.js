@@ -44,7 +44,7 @@ const questParse = window.location.hash.split('?').slice(1);
       try {
       //  console.log(`this is token,`, this.setToken() );
 
-const response = await axios.get(`api/reset/?resetPasswordToken=${parsedParams.token}`)
+const response = await axios.get(`api/checktoken/?resetPasswordToken=${parsedParams.token}`)
     
 // console.log(`response data from axios call:`, response.data);
 // console.log(`response data message from axios call:`, response.data.message);
