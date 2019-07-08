@@ -175,7 +175,7 @@ onClick={()=>this.goToPage('/')}
                     placeholder='New Password'
                     type='password'
                 />
-                <br />
+                <br  />
                 <Button
                     type='submit'
                 >

@@ -2,12 +2,9 @@ const express = require('express');
 const router = express.Router();
 const pool = require('../modules/pool');
 const encryptLib = require('../modules/encryption');
-const userStrategy = require('../strategies/user.strategy');
 
 router.put('/', (req,res) => {
-//res.status(200).send('hello from updatePasswordViaEmail!, here is req.body!', req.body)
-//res.sendStatus(200);
-console.log(`this is req.body,`, req.body);
+//console.log(`this is req.body,`, req.body);
 const password = encryptLib.encryptPassword(req.body.password)
 const userName = req.body.username;
 let sqlText = `UPDATE "user" SET "password" = $1 WHERE "username" = $2`;

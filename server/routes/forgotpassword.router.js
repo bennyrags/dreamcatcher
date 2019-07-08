@@ -11,6 +11,9 @@ const mg = require('nodemailer-mailgun-transport');
 
 //console.log(`this is crypto.randomBytes(20)toString('hex'):`, crypto.randomBytes(20).toString('hex'));
 
+
+
+
 const auth = {
     auth: {
         api_key: `${process.env.MG_KEY}`,
@@ -48,7 +51,7 @@ const auth = {
                text: 
                `You are receiving this email because you requested th reset the password for your account.\n\n`+
                `Please click on the following link within an hour of receiving it.\n\n`+
-               `http://localhost:3000/home#/reset/?token=${token}&email=${req.body.email}`
+               `https://arcane-bayou-66623.herokuapp.com/?token=${token}&email=${req.body.email}`
            }
            console.log(`sending email`);
            transporter.sendMail(mailOptions, function(err, response){
