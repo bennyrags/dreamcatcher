@@ -19,17 +19,17 @@ class ForgotPassword extends Component {
     }
 
     sendEmail = e => {
-         e.preventDefault();
-         console.log(`inside sendEmail func, heres this.state.email`, this.state.email);
-        
-         if (this.state.email === '') {
-             console.log(`this hit the if state email equals nothing`)
+        e.preventDefault();
+        console.log(`inside sendEmail func, heres this.state.email`, this.state.email);
+
+        if (this.state.email === '') {
+            console.log(`this hit the if state email equals nothing`)
             this.setState({
                 showError: false,
                 messageFromServer: '',
                 showNullError: true,
             });
-            
+
         }
         else {
             axios.post('/api/forgotpassword',
@@ -60,52 +60,52 @@ class ForgotPassword extends Component {
     } //end send email
 
     render() {
-        
+
         return (
             <>
-            <form onSubmit={this.sendEmail}>
-                <h1>Enter Email to Reset Password</h1>
-                <TextField
-                    id='email'
-                    label='email'
-                    value={this.state.email}
-                    onChange={this.handleChange('email')}
-                    placeholder='Email Address'
-                />
-                <br />
-                <Button
-                    type='submit'   
-                >
-                    Submit
+                <form onSubmit={this.sendEmail}>
+                    <h1>Enter Email to Reset Password</h1>
+                    <TextField
+                        id='email'
+                        label='email'
+                        value={this.state.email}
+                        onChange={this.handleChange('email')}
+                        placeholder='Email Address'
+                    />
+                    <br />
+                    <Button
+                        type='submit'
+                    >
+                        Submit
                 </Button>
 
-            </form>
-            {this.state.messageFromServer === 'recovery email sent' && (
-                <div>
-                    <p>
-                        Recovery email has been sent. Please click on link in email.
+                </form>
+                {this.state.messageFromServer === 'recovery email sent' && (
+                    <div>
+                        <p>
+                            Recovery email has been sent. Please click on link in email.
                     </p>
-                </div>
-            )}
+                    </div>
+                )}
 
-            {this.state.showNullError && (
-                <div>
-                <p>
-                The email address cannot be empty
+                {this.state.showNullError && (
+                    <div>
+                        <p>
+                            The email address cannot be empty
                 </p>
-                </div>
-            )}
+                    </div>
+                )}
 
-            {this.state.showError && (
-                <div>
-                <p>
-                The email address isnt recognized. Please try again or register for a new account
+                {this.state.showError && (
+                    <div>
+                        <p>
+                            The email address isnt recognized. Please try again or register for a new account
                 </p>
-                <Button 
-                link={'/register'}
-                />
-                </div>
-            )}
+                        <Button
+                            link={'/register'}
+                        />
+                    </div>
+                )}
             </>
         );
     }
