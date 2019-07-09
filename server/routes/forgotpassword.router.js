@@ -43,6 +43,8 @@ const auth = {
             })
         ///this is where I'm going to try to get the mail to go
 
+        //make the url depend on whether deployed to heroku or not
+        //set this HEROKU var using HEROKU CLI
         const resetUrl = () => {
             if (process.env.HEROKU) {
                 return `https://arcane-bayou-66623.herokuapp.com/#/reset/`
