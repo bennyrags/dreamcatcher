@@ -111,6 +111,8 @@ align-self:flex-end;
     background:transparent;
     border:1px solid white;
     display:block;
+    margin: .5em auto;
+    padding:10px;
   }
 
   /* .container input[type='password'], 
