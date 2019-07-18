@@ -53,7 +53,8 @@ class ForgotPassword extends Component {
 
                 })
                 .catch(error => {
-                    console.log(`this is errror in axios req:`, error)
+                    alert('There was a problem resetting your password, please try again later.')
+                    
                 });
         }
 
