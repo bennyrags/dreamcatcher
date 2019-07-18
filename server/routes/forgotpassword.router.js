@@ -67,7 +67,8 @@ const auth = {
            console.log(`sending email`);
            transporter.sendMail(mailOptions, function(err, response){
                if (err) {
-                   console.log(`there was an error sending email:`, err);           
+                   console.log(`there was an error sending email:`, err);  
+                   res.status(500).send('Error resetting password')         
                }
                else {
                    console.log(`here is the response:`, response);
