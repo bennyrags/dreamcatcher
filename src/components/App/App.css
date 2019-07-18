@@ -115,6 +115,10 @@ align-self:flex-end;
     padding:10px;
   }
 
+  input::before {
+      border-bottom:0 !important;
+  }
+
   /* .container input[type='password'], 
   .container input[type='username'] {
       padding: 10px 20px;

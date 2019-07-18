@@ -20,10 +20,10 @@ class ForgotPassword extends Component {
 
     sendEmail = e => {
         e.preventDefault();
-        console.log(`inside sendEmail func, heres this.state.email`, this.state.email);
+        //console.log(`inside sendEmail func, heres this.state.email`, this.state.email);
 
         if (this.state.email === '') {
-            console.log(`this hit the if state email equals nothing`)
+           // console.log(`this hit the if state email equals nothing`)
             this.setState({
                 showError: false,
                 messageFromServer: '',
