@@ -30,9 +30,9 @@ Create a new database, rename the db in server/modules/pool.js. Follow instructi
  
 NOTE: this repo uses [mailgun (MG)](https://www.mailgun.com/) to send 'forgot password' emails. To fully enact this feature, you will need to set up an account on the MG website, and then add a few vars to the .env file:
 
--EMAIL_ADDRESS: email address from which you want to send these emails 
--MG_Domain: the domain used by MG to send the emails (there is a sandbox option)
--MG_Key: key provided by MG for validation
+* EMAIL_ADDRESS: email address from which you want to send these emails 
+* MG_Domain: the domain used by MG to send the emails (there is a sandbox option)
+* MG_Key: key provided by MG for validation
 
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server`
