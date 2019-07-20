@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import Button from '@material-ui/core/Button';
-//import TextField from '@material-ui/core/TextField'
-//import {HashRouter as Router} from 'react-router-dom';
 import Grid from '@material-ui/core/Grid'
-
-//let updateView = '';
-
 
 class NewDreamStep4 extends Component {
 
@@ -17,23 +12,7 @@ class NewDreamStep4 extends Component {
     }
 
     addThemes = (event) => {
-        //BUG - UNSELECTING BOX
-        //need to add an if statement to make sure the click is not UNSELECTING the checkbox. 
-        // if (event.target.checked !==true) {
-        //     console.log(`this eventTarget has been unchecked`);
-        //     let themeIds = this.props.themesSelected
-        //     //do loop to find index of number in ThemeIDs array that matches unchecked value, use that index to slice out number
-        //     for (let i=0; i < themeIds.length; i++ ) {
-        //         if (event.target.value == themeIds[i]) {
-        //             this.setState({
-        //             themeIds: themeIds.slice(i, 0)
-        //             })
-
-        //             console.log(`themeIds afte slice`, themeIds);
-        //         }
-        //     }
-        // }
-
+        //TODO: address unselecting box bug:
 
         this.setState({
             addThemes: {
@@ -67,17 +46,6 @@ class NewDreamStep4 extends Component {
 
     componentDidMount() {
         this.getThemes();
-
-        // //to make sure checked themes remain checked until submit
-        //     if (this.state.addThemes.themeIDs !==[])  {
-        //         let input = document.getElementsByTagName('input');
-        //                for (let i=0; i < input.length; i++) {
-        //             if (this.props.themesSelected.includes(Number(input[i].value))) {
-        //                 input[i].checked = true;
-
-        //             }
-        //         }
-        //     }
     }
 
     render() {

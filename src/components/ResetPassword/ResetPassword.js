@@ -16,9 +16,7 @@ class ResetPassword extends Component {
   }
 
   parseParams = () => {
-    // console.log(`this is window location search`, window.location.search);
-    // console.log(`this is window location HASH`, window.location.hash);
-    // console.log(`this is window location HASH SPLIT`, window.location.hash.split('='));
+  
     this.setState({
       ...this.state,
       email: window.location.hash.split('=')[2]
