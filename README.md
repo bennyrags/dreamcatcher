@@ -1,4 +1,4 @@
-# Dreamcatcher
+# HORACE THE DREAMER
 
 A dream app for dreamers. Dreamers can record their dreams, their mood and temp, add themes, and track their dreams over time.
 
