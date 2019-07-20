@@ -18,8 +18,9 @@ Horace The Dreamer is an app for dreamers.
         I look at my phone a lot. It's the first thing I look at in the morning. It seemed only natural to build an app that could be used on a phone to track dreams. 
       </p>
       <p>
-        At first, I called it Dreamcatcher. But that name was taken. So I tried to think of something clever. Ten minutes later, I asked my pal Horace if I could name the app after him. He said yes, provided I buy him dessert and listen to him describes his dreams of his desserts eating him.
+        At first, I called it Dreamcatcher. But that name was taken. So I tried to think of something clever. Ten minutes later, I asked my pal Horace if I could name the app after him. He said yes, provided I buy him dessert and listen to him describe his dreams of his desserts eating him.
       </p>
+      <p>I reluctantly agreed.</p>
     </div>
   </div>
 );
