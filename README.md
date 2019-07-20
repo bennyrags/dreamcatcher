@@ -4,7 +4,7 @@ A dream app for dreamers. Dreamers can record their dreams, their mood and temp,
 
 ## Getting Started
 
-Fork and clone this app. Set up NPM and PostgreSQL using the steps listed in Development Setup Instructions section below. Use the database.sql file in the root folder to create the PostgreSQL database and table. I recommend using Postico to set up Postgres and Postman to test SQL queies.
+Fork and clone this app. Set up NPM and PostgreSQL using the steps listed in Development Setup Instructions section below. Use the database.sql file in the root folder to create the PostgreSQL database and table. I recommend using Postico to set up Postgres and Postman to test SQL queries.
 
 
 ## Prerequisites
@@ -28,6 +28,12 @@ Create a new database, rename the db in server/modules/pool.js. Follow instructi
     ```
  In `.env` file, replace `secret code` with some long random string for security. You can use a site like  [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `secret code`, you will get a warning.
  
+NOTE: this repo uses [https://www.mailgun.com/](mailgun) to send 'forgot password' emails. To fully enact this feature, you will need to set up an account on the MG website, and then add a few vars to the .env file:
+
+-EMAIL_ADDRESS: email address from which you want to send these emails 
+-MG_Domain: the domain used by MG to send the emails (there is a sandbox option)
+-MG_Key: key provided by MG for validation
+
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server`
 * Run `npm run client`
