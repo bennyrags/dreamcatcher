@@ -31,7 +31,7 @@ class Nav extends Component {
       <div className="nav">
         <header>
           <Link to="/home">
-            <h1 className="nav-title">DREAMCATCHER  </h1>
+            <h1 className="nav-title">HORACE THE DREAMER  </h1>
           </Link>
           <div className='menu'>
             <Button onClick={() => this.toggleDrawer('left', true)}>Menu</Button>
