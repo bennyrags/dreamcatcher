@@ -34,6 +34,8 @@ NOTE: this repo uses [mailgun (MG)](https://www.mailgun.com/) to send 'forgot pa
 * MG_Domain: the domain used by MG to send the emails (there is a sandbox option)
 * MG_Key: key provided by MG for validation
 
+### Run Project 
+
 * Start postgres if not running already by using `brew services start postgresql`
 * Run `npm run server`
 * Run `npm run client`
