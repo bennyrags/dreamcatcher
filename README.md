@@ -28,7 +28,7 @@ Create a new database, rename the db in server/modules/pool.js. Follow instructi
     ```
  In `.env` file, replace `secret code` with some long random string for security. You can use a site like  [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `secret code`, you will get a warning.
  
-NOTE: this repo uses [https://www.mailgun.com/](mailgun) to send 'forgot password' emails. To fully enact this feature, you will need to set up an account on the MG website, and then add a few vars to the .env file:
+NOTE: this repo uses [mailgun (MG)](https://www.mailgun.com/) to send 'forgot password' emails. To fully enact this feature, you will need to set up an account on the MG website, and then add a few vars to the .env file:
 
 -EMAIL_ADDRESS: email address from which you want to send these emails 
 -MG_Domain: the domain used by MG to send the emails (there is a sandbox option)
